@@ -27,8 +27,6 @@ class RecipeService:
         url = 'https://api.edamam.com/api/recipes/v2'
         response = requests.get(url, params=params)
 
-        print(response.url)
-
         data = response.json()
         recipes = data['hits']
         return recipes[:int(params['count'])]
