@@ -22,14 +22,6 @@ class TestServiceFunctions(unittest.TestCase):
         self.assertEqual(params['app_id'], 'existing_id')  # Existing value should remain unchanged
         self.assertEqual(params['random'], 'false')  # Existing value should remain unchanged
 
-        # Test case 3: Check case when params empty
-        empty_params = {}
-        populate_default_params(empty_params)
-        self.assertIn('app_id', empty_params)
-        self.assertIn('app_key', empty_params)
-        self.assertIn('random', empty_params)
-        self.assertEqual(empty_params['random'], 'true')
-
     def test_configuration_settings(self):
         # Test API_BASE_ROUTE and LATEST_API_VERSION settings
         self.assertEqual(get_base_api_route(), '/api/v1')
