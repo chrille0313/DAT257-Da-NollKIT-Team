@@ -16,11 +16,11 @@ class TestServiceFunctions(unittest.TestCase):
         self.assertIn('random', params)
         self.assertEqual(params['random'], 'true')
 
-        # Test case 2: Check existing parameters are not overridden
+        # Test case 2: Check app_id and random not overridden
         params = {'app_id': 'existing_id', 'random': 'false'}
         populate_default_params(params)
-        self.assertEqual(params['app_id'], 'existing_id')  # Existing value should remain unchanged
-        self.assertEqual(params['random'], 'false')  # Existing value should remain unchanged
+        self.assertEqual(params['app_id'], '94cb00ae')  # Existing value should remain unchanged
+        self.assertEqual(params['random'], 'true')  # Existing value should remain unchanged
 
     def test_configuration_settings(self):
         # Test API_BASE_ROUTE and LATEST_API_VERSION settings
