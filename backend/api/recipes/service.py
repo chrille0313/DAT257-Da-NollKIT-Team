@@ -34,20 +34,18 @@ class RecipeService:
 
 
 def populate_default_params(params):
-    # params['app_id'] = '94cb00ae'  # FIXME: regenerate and use environment variable
-    # params['app_key'] = '8dfe8940a9a85b83edfa9e7b97f4e5b0'  # FIXME: regenerate and use environment variable
-    # params['random'] = 'true'
-    default_params = {
-        'app_id': '94cb00ae',
-        'app_key': '8dfe8940a9a85b83edfa9e7b97f4e5b0',
-        'random': 'true'
-    }
+    params['app_id'] = '94cb00ae'  # FIXME: regenerate and use environment variable
+    params['app_key'] = '8dfe8940a9a85b83edfa9e7b97f4e5b0'  # FIXME: regenerate and use environment variable
+    params['random'] = 'true'
 
-    for key, value in default_params.items():
-        params.setdefault(key, value)
-
-    params['field'] = set(params.get('field', '')) | {'label', 'calories', 'image', 'co2EmissionsClass', 'yield'}
+    #params['field'] = set(params.get('field', '')) | {'label', 'calories', 'image', 'co2EmissionsClass', 'yield'}
+    params['field'] = set(set_param_to_list(params)) | {'label', 'calories', 'image', 'co2EmissionsClass', 'yield'}
     params['count'] = params.get('count', 5)
     params['mealType'] = params.get('mealType', choice(['breakfast', 'dinner', 'lunch']))
     params['type'] = params.get('type', 'public')
 
+
+def set_param_to_list(params):
+    if type(params.get('field', '')) is not list:
+        return list(params)
+    return params.get('field', '')
