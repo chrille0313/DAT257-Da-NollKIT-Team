@@ -1,11 +1,12 @@
 import requests
 from random import choice
 
+
 class RecipeService:
 
     def get_random_recipes(self, **params):
         # List of all parameters:
-        # type: public | user | any [Should always be public or any]
+        # type: #public | user | any [Should always be public or any]
         # beta: true | false [Should always be false]
         # q: query
         # app_id: 94cb00ae [Will always be the same]
@@ -21,7 +22,7 @@ class RecipeService:
         # random: returns 20 random recipes 
         # field: 
         # co2EmissionClass: A-G
-        
+
         populate_default_params(params)
 
         url = 'https://api.edamam.com/api/recipes/v2'
@@ -31,12 +32,22 @@ class RecipeService:
         recipes = data['hits']
         return recipes[:int(params['count'])]
 
+
 def populate_default_params(params):
-    params['app_id'] = '94cb00ae'  # FIXME: regenerate and use environment variable
-    params['app_key'] = '8dfe8940a9a85b83edfa9e7b97f4e5b0'  # FIXME: regenerate and use environment variable
-    params['random'] = 'true'
+    # params['app_id'] = '94cb00ae'  # FIXME: regenerate and use environment variable
+    # params['app_key'] = '8dfe8940a9a85b83edfa9e7b97f4e5b0'  # FIXME: regenerate and use environment variable
+    # params['random'] = 'true'
+    default_params = {
+        'app_id': '94cb00ae',
+        'app_key': '8dfe8940a9a85b83edfa9e7b97f4e5b0',
+        'random': 'true'
+    }
+
+    for key, value in default_params.items():
+        params.setdefault(key, value)
 
     params['field'] = set(params.get('field', '')) | {'label', 'calories', 'image', 'co2EmissionsClass', 'yield'}
     params['count'] = params.get('count', 5)
     params['mealType'] = params.get('mealType', choice(['breakfast', 'dinner', 'lunch']))
     params['type'] = params.get('type', 'public')
+
