@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import RecipeColumnContainer from './components/RecipeColumnContainer';
 import Navbar from './components/Navbar';
+import RecipeColumnContainer from './components/RecipeColumnContainer';
 
 function App() {
   return (
