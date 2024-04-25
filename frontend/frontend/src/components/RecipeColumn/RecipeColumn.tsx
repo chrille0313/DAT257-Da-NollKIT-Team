@@ -1,6 +1,6 @@
 import styles from './RecipeColumn.module.css';
 import kangaroo from '../../static/images/kangaroo.jpg';
-import kangaroo2 from '../../static/images/kram-med-ru.png';
+import kangaroo2 from '../../static/images/kram-med-ru.jpg';
 
 
 export type Recipe = {
