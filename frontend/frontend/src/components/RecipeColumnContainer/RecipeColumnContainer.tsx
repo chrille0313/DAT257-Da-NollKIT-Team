@@ -22,7 +22,8 @@ function RecipeColumnContainer() {
       title: 'F1 seger',
       ingredients: [
         ['DUN', '4'],
-        ['MAX VERSTAPPEN', '1'],
+        ['MAX', '1'],
+        ['VERSTAPPEN', '1']
       ]    },
     {
       title: 'Hästlasagne',
@@ -30,11 +31,17 @@ function RecipeColumnContainer() {
         ['Finduslasagne', '1 st']
       ]    },
     {
-      title: 'Kängurfamilj',
-      ingredients: [['Example ingredient', '1 tsk']]    },
+      title: 'Mac n Cheese',
+      ingredients: [
+        ['Ostbollar', '1 påse'],
+        ['Cheddarost', '1 kg'],
+        ['Prästost', '1 förpackning'],
+        ['Makaroner', '11 st'],
+        ['Grädde', '1 dl']
+      ]    },
     {
-      title: 'Kängurfamilj',
-      ingredients: [['Example ingredient', '1 tsk']]    },
+      title: 'Finsk frestelse',
+      ingredients: [['Isbitar', '8 kuber']]    },
   ]);
 
   return (
