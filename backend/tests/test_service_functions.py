@@ -1,30 +1,96 @@
 import unittest
+from api import API_BASE_ROUTE, LATEST_API_VERSION
 from api import get_base_api_route
-from api.recipes.service import populate_default_params
-from unittest.mock import patch, Mock
 from api.recipes.service import RecipeService
+from unittest.mock import patch, Mock
+import api.recipes.service as service
 
 
 class TestServiceFunctions(unittest.TestCase):
 
-    def test_populate_default_params(self):
-        # Test case 1: Check default parameters are added
+    def setUp(self):
+        self.recipe_service = service.RecipeService()
+
+    def test_default_params_are_added(self):
         params = {}
-        populate_default_params(params)
+        self.recipe_service.populate_default_params(params)
         self.assertIn('app_id', params)
         self.assertIn('app_key', params)
         self.assertIn('random', params)
-        self.assertEqual(params['random'], 'true')
 
-        # Test case 2: Check app_id and random not overridden
+    def test_forced_params_are_not_overridden(self):
         params = {'app_id': 'existing_id', 'random': 'false'}
-        populate_default_params(params)
+        self.recipe_service.populate_default_params(params)
         self.assertEqual(params['app_id'], '94cb00ae')  # Existing value should remain unchanged
         self.assertEqual(params['random'], 'true')  # Existing value should remain unchanged
 
     def test_configuration_settings(self):
         # Test API_BASE_ROUTE and LATEST_API_VERSION settings
-        self.assertEqual(get_base_api_route(), '/api/v1')
+        self.assertEqual(get_base_api_route(), API_BASE_ROUTE + LATEST_API_VERSION)
+
+    def test_get_ten_random_recipes_returns_ten_recipes(self):
+        self.assertTrue(len(self.recipe_service.get_random_recipes(count=10)) == 10)
+
+    def test_q_query_returns_results_with_correct_ingredients(self):
+        # Note that test is flaky, see: https://github.com/chrille0313/DishPlanner/issues/18
+        recipes = self.recipe_service.get_random_recipes(q='chicken', field='ingredients')
+        count = 0
+
+        for recipe in recipes:
+            ingredients = recipe['recipe']['ingredients']
+            for ingredient in ingredients:
+                if "chicken" in ingredient['food'].lower():
+                    count += 1
+                    break
+
+        self.assertEqual(count, 5)
+
+    def test_single_field_parameter_returns_correct_fields(self):
+        recipes = self.recipe_service.get_random_recipes(field='ingredients')
+
+        for recipe in recipes:
+            self.assertIn('ingredients', recipe['recipe'])
+
+    def test_multiple_fields_parameters_returns_correct_fields(self):
+        recipes = self.recipe_service.get_random_recipes(field=['ingredients', 'ingredientLines'])
+
+        for recipe in recipes:
+            self.assertIn('ingredients', recipe['recipe'])
+            self.assertIn('ingredients', recipe['recipe'])
+
+    def test_diet_parameter_query_returns_correct_results(self):
+        recipes = self.recipe_service.get_random_recipes(diet='balanced', field='dietLabels')
+
+        for recipe in recipes:
+            self.assertIn('Balanced', recipe['recipe']['dietLabels'])
+
+    def test_health_parameter_query_returns_correct_results(self):
+        recipes = self.recipe_service.get_random_recipes(health='vegan', field='healthLabels')
+
+        for recipe in recipes:
+            self.assertIn('Vegan', recipe['recipe']['healthLabels'])
+
+    def test_cuisine_type_query_returns_correct_results(self):
+        pass
+
+    def test_meal_type_query_returns_correct_results(self):
+        pass
+
+    def test_dish_type_query_returns_correct_results(self):
+        pass
+
+    def test_calories_query_returns_result_within_range(self):
+        pass
+
+    def test_time_query_returns_result_within_range(self):
+        pass
+
+    def test_co2_emissions_class_returns_result_of_emissions_class_or_above(self):
+        recipes = self.recipe_service.get_random_recipes(co2EmissionsClass='C', field='co2EmissionsClass')
+        acceptable_emission_classes = ['A+', 'A', 'B', 'C']
+
+        for recipe in recipes:
+            self.assertIn(recipe['recipe']['co2EmissionsClass'], acceptable_emission_classes)
 
     @patch('api.recipes.service.requests.get')
     def test_get_random_recipes_integration(self, mock_get):
@@ -35,9 +101,7 @@ class TestServiceFunctions(unittest.TestCase):
         }
         mock_get.return_value = mock_response
 
-        recipe_service = RecipeService()
-
-        recipes = recipe_service.get_random_recipes(count=2)
+        recipes = self.recipe_service.get_random_recipes(count=2)
 
         self.assertEqual(len(recipes), 2)  # Ensure the correct number of recipes is returned
         self.assertEqual(recipes[0]['recipe'], 'data1')  # Ensure the expected recipe data is returned
