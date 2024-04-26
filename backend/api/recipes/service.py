@@ -1,3 +1,5 @@
+import unittest
+
 import requests
 from random import choice
 
@@ -23,7 +25,7 @@ class RecipeService:
         # field: 
         # co2EmissionClass: A-G
 
-        populate_default_params(params)
+        self.populate_default_params(params)
 
         url = 'https://api.edamam.com/api/recipes/v2'
         response = requests.get(url, params=params)
@@ -32,20 +34,25 @@ class RecipeService:
         recipes = data['hits']
         return recipes[:int(params['count'])]
 
+    def populate_default_params(self, params):
+        default_fields = {'label', 'calories', 'image', 'co2EmissionsClass', 'yield'}
 
-def populate_default_params(params):
-    params['app_id'] = '94cb00ae'  # FIXME: regenerate and use environment variable
-    params['app_key'] = '8dfe8940a9a85b83edfa9e7b97f4e5b0'  # FIXME: regenerate and use environment variable
-    params['random'] = 'true'
+        params['app_id'] = '94cb00ae'  # FIXME: regenerate and use environment variable
+        params['app_key'] = '8dfe8940a9a85b83edfa9e7b97f4e5b0'  # FIXME: regenerate and use environment variable
+        params['random'] = 'true'
 
-    #params['field'] = set(params.get('field', '')) | {'label', 'calories', 'image', 'co2EmissionsClass', 'yield'}
-    params['field'] = set(set_param_to_list(params)) | {'label', 'calories', 'image', 'co2EmissionsClass', 'yield'}
-    params['count'] = params.get('count', 5)
-    params['mealType'] = params.get('mealType', choice(['breakfast', 'dinner', 'lunch']))
-    params['type'] = params.get('type', 'public')
+        if isinstance(params.get('field'), list):
+            params['field'] = set(params['field'])
+        else:
+            params['field'] = {params.get('field')} if 'field' in params else set()
 
+        params['field'] |= default_fields
 
-def set_param_to_list(params):
-    if type(params.get('field', '')) is not list:
-        return list(params)
-    return params.get('field', '')
+        default_params = {
+            'count': 5,
+            'mealType': choice(['breakfast', 'dinner', 'lunch']),
+            'type': 'public'
+        }
+
+        for k, v in default_params.items():
+            params.setdefault(k, v)
