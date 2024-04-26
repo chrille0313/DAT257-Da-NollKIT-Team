@@ -36,7 +36,7 @@ def populate_default_params(params):
     params['app_key'] = '8dfe8940a9a85b83edfa9e7b97f4e5b0'  # FIXME: regenerate and use environment variable
     params['random'] = 'true'
 
-    params['field'] = set(params.get('field', '')) | {'label', 'calories', 'image', 'co2EmissionsClass', 'yield'}
+    params['field'] = set(params.get('field', '')) | {'label', 'calories', 'image','images', 'co2EmissionsClass', 'yield', 'ingredients', 'totalTime', 'source', 'shareAs'}
     params['count'] = params.get('count', 5)
     params['mealType'] = params.get('mealType', choice(['breakfast', 'dinner', 'lunch']))
     params['type'] = params.get('type', 'public')
