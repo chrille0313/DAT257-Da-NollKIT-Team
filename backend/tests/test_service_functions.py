@@ -21,11 +21,10 @@ class TestServiceFunctions(unittest.TestCase):
     def test_forced_params_are_not_overridden(self):
         params = {'app_id': 'existing_id', 'random': 'false'}
         self.recipe_service.populate_default_params(params)
-        self.assertEqual(params['app_id'], '94cb00ae')  # Existing value should remain unchanged
-        self.assertEqual(params['random'], 'true')  # Existing value should remain unchanged
+        self.assertEqual(params['app_id'], '94cb00ae')
+        self.assertEqual(params['random'], 'true')
 
     def test_configuration_settings(self):
-        # Test API_BASE_ROUTE and LATEST_API_VERSION settings
         self.assertEqual(get_base_api_route(), API_BASE_ROUTE + LATEST_API_VERSION)
 
     def test_get_ten_random_recipes_returns_ten_recipes(self):
@@ -142,7 +141,6 @@ class TestServiceFunctions(unittest.TestCase):
 
     @patch('api.recipes.service.requests.get')
     def test_get_random_recipes_integration(self, mock_get):
-        # Mock the response from the external API
         mock_response = Mock()
         mock_response.json.return_value = {
             'hits': [{'recipe': 'data1'}, {'recipe': 'data2'}]
@@ -151,8 +149,8 @@ class TestServiceFunctions(unittest.TestCase):
 
         recipes = self.recipe_service.get_random_recipes(count=2)
 
-        self.assertEqual(len(recipes), 2)  # Ensure the correct number of recipes is returned
-        self.assertEqual(recipes[0]['recipe'], 'data1')  # Ensure the expected recipe data is returned
+        self.assertEqual(len(recipes), 2)
+        self.assertEqual(recipes[0]['recipe'], 'data1')
         self.assertEqual(recipes[1]['recipe'], 'data2')
 
         # Todo: add assertion for parameters
