@@ -1,2 +1,1 @@
-import RecipeColumn from "./RecipeColumn";
-export default RecipeColumn;
+export * from "./RecipeColumn";

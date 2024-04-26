@@ -1,3 +1,1 @@
-import RecipeColumnContainer from "./RecipeColumnContainer";
-
-export default RecipeColumnContainer;
+export * from "./RecipeColumnContainer";
