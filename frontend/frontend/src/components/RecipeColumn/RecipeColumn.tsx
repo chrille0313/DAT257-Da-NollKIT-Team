@@ -3,12 +3,6 @@ import kangaroo from '../../static/images/kangaroo.jpg';
 import kangaroo2 from '../../static/images/kram-med-ru.jpg';
 
 
-export type Recipe = {
-  title: string;
-  ingredients: string[][];
-  //amounts: string[];
-}
-
 interface RecipeColumnProps {
   recipe: Recipe
 }
