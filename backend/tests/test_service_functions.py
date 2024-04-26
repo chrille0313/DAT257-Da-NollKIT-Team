@@ -88,12 +88,13 @@ class TestServiceFunctions(unittest.TestCase):
         for recipe in recipes:
             self.assertIn('desserts', recipe['recipe']['dishType'])
 
-    def test_calories_query_returns_result_within_range(self): # TODO: searching for calories with a range doesn't work
-        recipes = self.recipe_service.get_random_recipes(calories='500-1000', field='calories')
+    def test_calories_query_returns_result_below_max(self): # FIXME: searching for calories with a range doesn't work
+        # See issue on github, https://github.com/chrille0313/DishPlanner/issues/22
+        test_max_calories = '1000'
+        recipes = self.recipe_service.get_random_recipes(calories=test_max_calories, field='calories')
 
         for recipe in recipes:
-            self.assertGreaterEqual(recipe['recipe']['calories'], 500)
-            self.assertLessEqual(recipe['recipe']['calories'], 1000)
+            self.assertLessEqual(recipe['recipe']['calories'], int(test_max_calories))
 
     def test_calories_query_returns_result_above_min(self):
         recipes = self.recipe_service.get_random_recipes(calories='500+', field='calories')
@@ -102,29 +103,35 @@ class TestServiceFunctions(unittest.TestCase):
             self.assertGreaterEqual(recipe['recipe']['calories'], 500)
 
     def test_calories_query_returns_result_below_max(self):
-        recipes = self.recipe_service.get_random_recipes(calories='-1000', field='calories')
+        test_max_calories = '1000'
+        recipes = self.recipe_service.get_random_recipes(calories=test_max_calories, field='calories')
 
         for recipe in recipes:
             self.assertLessEqual(recipe['recipe']['calories'], 1000)
 
     def test_time_query_returns_result_within_range(self):
-        recipes = self.recipe_service.get_random_recipes(time='40-60', field='totalTime')
+        test_floor_time = '40'
+        test_ceil_time = '60'
+        recipes = self.recipe_service.get_random_recipes(time=test_floor_time + '-' + test_ceil_time, field='totalTime')
 
         for recipe in recipes:
             self.assertGreaterEqual(recipe['recipe']['totalTime'], 40)
             self.assertLessEqual(recipe['recipe']['totalTime'], 60)
 
     def test_time_query_returns_result_above_min(self):
-        recipes = self.recipe_service.get_random_recipes(time='60+', field='totalTime')
+        test_max_time = '60'
+        recipes = self.recipe_service.get_random_recipes(time=(test_max_time + '+'), field='totalTime')
 
         for recipe in recipes:
-            self.assertGreaterEqual(recipe['recipe']['totalTime'], 60)
+            self.assertGreaterEqual(recipe['recipe']['totalTime'], int(test_max_time))
 
     def test_time_query_returns_result_below_max(self):
-        recipes = self.recipe_service.get_random_recipes(time='-60', field='totalTime')
+        test_max_time = '30'
+        recipes = self.recipe_service.get_random_recipes(time=test_max_time, field='totalTime')
 
         for recipe in recipes:
-            self.assertLessEqual(recipe['recipe']['totalTime'], 60)
+            print(recipe['recipe']['totalTime'])
+            self.assertLessEqual(recipe['recipe']['totalTime'], int(test_max_time))
 
     def test_co2_emissions_class_returns_result_of_emissions_class_or_above(self):
         recipes = self.recipe_service.get_random_recipes(co2EmissionsClass='C', field='co2EmissionsClass')

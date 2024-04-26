@@ -1,5 +1,3 @@
-import unittest
-
 import requests
 from random import choice
 
@@ -29,6 +27,8 @@ class RecipeService:
 
         url = 'https://api.edamam.com/api/recipes/v2'
         response = requests.get(url, params=params)
+
+        #print(response.url)  # Test debug print
 
         data = response.json()
         recipes = data['hits']
