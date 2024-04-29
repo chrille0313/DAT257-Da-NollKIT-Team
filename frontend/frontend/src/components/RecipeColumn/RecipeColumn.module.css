@@ -4,8 +4,39 @@
 }
 
 .RecipeImageContainer {
+    display: flex;
+    height: 70%;
     position: relative;
 }
+.EmissionContainer{
+    width: 100%;
+    display: flex;
+    position: absolute;
+    justify-content: flex-end;
+    padding: 0.3rem;
+
+    
+    
+}
+
+.EmissionsClass{
+    display: flex;
+    border: solid;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: rgb(0, 255, 34);
+    border-width: 0.2rem;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    margin: 0rem;
+    justify-content: center;
+    align-items: center;
+  
+
+}
+/* .co2Emissionsclass{
+    color: rgb(0, 255, 34);
+} */
 
 .ImageTextOverlay {
     width: 100%;
@@ -25,6 +56,9 @@
     background: linear-gradient(0deg, rgba(59,59,59,1) 0%, rgba(59,59,59,1) 5%, rgba(59,59,59,0.35) 75%, rgba(255,255,255,0) 100%);
 }
 
+
+
+
 .RecipeInfoContainer {
     padding: 0.5rem 0.75rem 0.75rem 0.75rem;
 
@@ -35,7 +69,7 @@
 
 .RecipeTitle {
     text-shadow: rgba(0, 0, 0, 0.25) 0 4px 4px;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     text-align: center;
 }
 
@@ -51,10 +85,4 @@
     text-align: center;
 }
 
-.IngredientsListContainer {
-    display: flex;
-}
 
-.IngredientsTable > tr:not(:first-child) > td {
-    padding-top: 0.25rem;
-}

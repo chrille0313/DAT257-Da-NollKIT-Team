@@ -10,9 +10,16 @@ interface RecipeColumnProps {
 function RecipeColumn({recipe}: RecipeColumnProps) {
 
   return (
-    <article className={styles. RecipeContainer}>
-      <div className={styles.RecipeImageContainer}>
-        <img src={kangaroo2} alt='Tasty kangaroo meat' />
+    <article className={styles.RecipeContainer}>
+      
+      <div className={styles.RecipeImageContainer}> 
+        
+        <img src={recipe.image} alt='Tasty kangaroo meat'></img>
+        <div className = {styles.EmissionContainer}>
+          <div className={styles.EmissionsClass}>
+            <p>{recipe.co2EmissionsClass} </p>
+          </div>
+        </div>
         <div className={styles.ImageTextOverlay}>
           <p>{recipe.totalTime} min</p>
           <p>{recipe.yield} portions</p>
@@ -21,8 +28,8 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
 
       <div className={styles.RecipeInfoContainer}>
         <h2 className={styles.RecipeTitle}>{recipe.label}</h2>
-        <hr />
-        <div className={styles.IngredientsContainer}>
+       {/* <hr /> */}
+        {/* <div className={styles.IngredientsContainer}>
           <h3 className={styles.RecipeSubtitle}>Ingredients</h3>
 
           <table className={styles.IngredientsTable}>
@@ -33,7 +40,7 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
               </tr>
             ))}
           </table>
-        </div>
+        </div> */}
       </div>
     </article>
   );
