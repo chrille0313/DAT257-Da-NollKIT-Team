@@ -5,12 +5,20 @@ import { Recipe } from '../../types';
 
 interface RecipeColumnProps {
   recipe: Recipe
+  onLockClick: () => void;
 }
 
-function RecipeColumn({recipe}: RecipeColumnProps) {
+function RecipeColumn({recipe, onLockClick}: RecipeColumnProps) {
 
+  const handleLockClick = () => {
+    onLockClick(); 
+  };
+  
   return (
     <article className={styles. RecipeContainer}>
+      {/* <button onClick={handleLockClick}> # Example button for column locking, remove if necesarry
+      Lock column
+      </button> */}
       <div className={styles.RecipeImageContainer}>
         <img src={kangaroo2} alt='Tasty kangaroo meat' />
         <div className={styles.ImageTextOverlay}>

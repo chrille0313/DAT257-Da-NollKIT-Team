@@ -23,6 +23,16 @@ function RecipeColumnContainer() {
     setRecipes(responseRecipes)
   };
 
+  const toggleLockRecipe = (index: number) => {
+   if (lockedRecipes.includes(index)) {
+      lockedRecipes.splice(lockedRecipes.indexOf(index), 1)
+   }
+   else {
+    lockedRecipes.push(index);
+   }
+  };
+
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -30,7 +40,7 @@ function RecipeColumnContainer() {
   return (
     <div className={styles.RecipeColumnContainer}>
       {recipes.map((recipe, index) => (
-        <RecipeColumn key={index} recipe={recipe} />
+        <RecipeColumn key={index} recipe={recipe} onLockClick={() => toggleLockRecipe(index)} />
       ))}
     </div>
   );
