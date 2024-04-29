@@ -1,12 +1,11 @@
 import styles from './RecipeColumn.module.css';
 import kangaroo from '../../static/images/kangaroo.jpg';
 import kangaroo2 from '../../static/images/kram-med-ru.jpg';
-
+import { Recipe } from '../../types';
 
 interface RecipeColumnProps {
   recipe: Recipe
 }
-
 
 function RecipeColumn({recipe}: RecipeColumnProps) {
 
@@ -15,13 +14,13 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
       <div className={styles.RecipeImageContainer}>
         <img src={kangaroo2} alt='Tasty kangaroo meat' />
         <div className={styles.ImageTextOverlay}>
-          <p>60 min</p>
-          <p>4 portions</p>
-        </div> {/* Add text overlay */}
+          <p>{recipe.totalTime} min</p>
+          <p>{recipe.yield} portions</p>
+        </div>
       </div>
 
       <div className={styles.RecipeInfoContainer}>
-        <h2 className={styles.RecipeTitle}>{recipe.title}</h2>
+        <h2 className={styles.RecipeTitle}>{recipe.label}</h2>
         <hr />
         <div className={styles.IngredientsContainer}>
           <h3 className={styles.RecipeSubtitle}>Ingredients</h3>
@@ -29,8 +28,8 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
           <table className={styles.IngredientsTable}>
             {recipe.ingredients.map((ingredient, index) => (
               <tr key={index}>
-                <td>{ingredient[0]}</td>
-                <td>{ingredient[1]}</td>
+                <td>{ingredient.food}</td>
+                <td>{ingredient.quantity} {ingredient.measure}</td>
               </tr>
             ))}
           </table>
