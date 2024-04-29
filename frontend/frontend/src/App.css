@@ -1,0 +1,16 @@
+.App {
+  height: 100vh;
+  max-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  color: #ffffff;
+  background-color: #3b3b3b;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.App-link {
+  color: #61dafb;
+}

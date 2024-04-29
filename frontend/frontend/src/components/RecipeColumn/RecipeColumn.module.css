@@ -1,0 +1,60 @@
+.RecipeContainer{
+    background-color: #3b3b3b;
+    color: #ffffff;
+}
+
+.RecipeImageContainer {
+    position: relative;
+}
+
+.ImageTextOverlay {
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem 0.25rem 1rem;
+
+    position: absolute;
+    bottom: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    font-family: 'Inria Serif', serif;
+
+    background: rgb(59,59,59);
+    background: linear-gradient(0deg, rgba(59,59,59,1) 0%, rgba(59,59,59,1) 5%, rgba(59,59,59,0.35) 75%, rgba(255,255,255,0) 100%);
+}
+
+.RecipeInfoContainer {
+    padding: 0.5rem 0.75rem 0.75rem 0.75rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.RecipeTitle {
+    text-shadow: rgba(0, 0, 0, 0.25) 0 4px 4px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.IngredientsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    font-family: 'Inria Serif', serif;
+}
+
+.RecipeSubtitle{
+    text-align: center;
+}
+
+.IngredientsListContainer {
+    display: flex;
+}
+
+.IngredientsTable > tr:not(:first-child) > td {
+    padding-top: 0.25rem;
+}
