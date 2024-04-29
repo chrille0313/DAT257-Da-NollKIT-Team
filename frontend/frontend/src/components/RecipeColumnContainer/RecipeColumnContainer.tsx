@@ -17,7 +17,6 @@ function RecipeColumnContainer() {
     console.log(response)
     const responseRecipes = response.map((recipeResponse) => recipeResponse.recipe);
     for (var index of lockedRecipes) {
-        console.log(index)
         responseRecipes[index] = recipes[index]
     }
     
