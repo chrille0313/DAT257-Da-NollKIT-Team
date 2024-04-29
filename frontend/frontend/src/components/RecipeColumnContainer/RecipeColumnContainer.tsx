@@ -10,12 +10,17 @@ const recipe_url = api_url + "/recipes";
 
 function RecipeColumnContainer() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [lockedRecipes, setLockedRecipes] = useState<number[]>([]); // TODO: connect lock button here
 
   async function fetchData() {
     const response = await get<RecipeAPIResponse>(recipe_url);
     console.log(response)
     const responseRecipes = response.map((recipeResponse) => recipeResponse.recipe);
-    //console.log(responseRecipes);
+    for (var index of lockedRecipes) {
+        console.log(index)
+        responseRecipes[index] = recipes[index]
+    }
+    
     setRecipes(responseRecipes)
   };
 
