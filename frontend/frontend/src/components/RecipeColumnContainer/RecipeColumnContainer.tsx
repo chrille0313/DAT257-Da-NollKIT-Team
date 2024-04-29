@@ -1,48 +1,27 @@
-import { useState } from "react";
-import RecipeColumn, { Recipe } from "../RecipeColumn/RecipeColumn";
+import { useEffect, useState } from "react";
+import RecipeColumn from "../RecipeColumn/RecipeColumn";
 import styles from './RecipeColumnContainer.module.css';
+import { get } from '../../utils';
+import { RecipeAPIResponse, Recipe } from '../../types';
 
+
+const api_url = "http://127.0.0.1:5000/api/v1";
+const recipe_url = api_url + "/recipes";
 
 function RecipeColumnContainer() {
-  const [recipes, setRecipes] = useState<Recipe[]>([
-    {
-      title: 'Kängurufamilj',
-      ingredients: [
-        ['Example ingredient', '1 tsk'],
-        ['Oskyldigt kängurubarn', '1 st'],
-        ['Kärleksfull Kängurumamma', '1 st'],
-        ['Smör', '5 msk'],
-        ['Timjan', '1 knippe'],
-        ['Salt', 'Massor'],
-        ['Peppar', 'Lite mindre'],
-        ['Vitlök', '4 klyftor']
-      ]
-    },
-    {
-      title: 'F1 seger',
-      ingredients: [
-        ['DUN', '4'],
-        ['MAX', '1'],
-        ['VERSTAPPEN', '1']
-      ]    },
-    {
-      title: 'Hästlasagne',
-      ingredients: [
-        ['Finduslasagne', '1 st']
-      ]    },
-    {
-      title: 'Mac n Cheese',
-      ingredients: [
-        ['Ostbollar', '1 påse'],
-        ['Cheddarost', '1 kg'],
-        ['Prästost', '1 förpackning'],
-        ['Makaroner', '11 st'],
-        ['Grädde', '1 dl']
-      ]    },
-    {
-      title: 'Finsk frestelse',
-      ingredients: [['Isbitar', '8 kuber']]    },
-  ]);
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
+
+  async function fetchData() {
+    const response = await get<RecipeAPIResponse>(recipe_url);
+    console.log(response)
+    const responseRecipes = response.map((recipeResponse) => recipeResponse.recipe);
+    //console.log(responseRecipes);
+    setRecipes(responseRecipes)
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div className={styles.RecipeColumnContainer}>
