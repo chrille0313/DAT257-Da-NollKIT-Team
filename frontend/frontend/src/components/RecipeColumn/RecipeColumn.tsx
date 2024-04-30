@@ -10,15 +10,18 @@ interface RecipeColumnProps {
 
 function RecipeColumn({recipe, onLockClick}: RecipeColumnProps) {
 
-  const handleLockClick = () => {
-    onLockClick(); 
+  const handleLockClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    
+    if (event.type !== 'keydown') { 
+      onLockClick(); 
+    } 
   };
   
   return (
     <article className={styles. RecipeContainer}>
-      {/* <button onClick={handleLockClick}> # Example button for column locking, remove if necesarry
+      <button onClick={handleLockClick}> // Example button for column locking, remove if necesarry
       Lock column
-      </button> */}
+      </button>
       <div className={styles.RecipeImageContainer}>
         <img src={kangaroo2} alt='Tasty kangaroo meat' />
         <div className={styles.ImageTextOverlay}>
