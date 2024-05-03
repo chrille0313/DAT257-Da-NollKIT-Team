@@ -68,20 +68,22 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
         
         </div>
       </div>
-
-      <div className={styles.HoverButtonGroup}>
-      <IconButton className={styles.IconButton}>
-        <ClearOutlinedIcon/>
-      </IconButton>
-      <IconButton className={styles.IconButton}>
-        <FileDownloadOutlinedIcon/>
-      </IconButton>
-      <IconButton className={styles.IconButton}>
-        <InfoOutlinedIcon />
-      </IconButton>
-      <IconButton className={styles.IconButton}>
-        <LockIcon />
-      </IconButton>
+      
+      <div className={styles.HoverOverlay}>
+        <div className={styles.HoverButtonGroup}>
+          <IconButton className={styles.IconButton}>
+            <ClearOutlinedIcon/>
+          </IconButton>
+          <IconButton className={styles.IconButton}>
+            <FileDownloadOutlinedIcon/>
+          </IconButton>
+          <IconButton className={styles.IconButton}>
+            <InfoOutlinedIcon />
+          </IconButton>
+          <IconButton className={styles.IconButton}>
+            <LockOpenIcon />
+          </IconButton>
+        </div>
       </div>
     </article>
   );
