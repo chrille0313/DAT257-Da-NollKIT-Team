@@ -10,7 +10,7 @@ interface RecipeColumnProps {
 function RecipeColumn({recipe}: RecipeColumnProps) {
 
   return (
-    <article className={styles. RecipeContainer}>
+    <article className={styles.RecipeContainer}>
       <div className={styles.RecipeImageContainer}>
         <img src={kangaroo2} alt='Tasty kangaroo meat' />
         <div className={styles.ImageTextOverlay}>
