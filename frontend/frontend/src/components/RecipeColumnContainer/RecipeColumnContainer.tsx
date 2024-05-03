@@ -3,6 +3,9 @@ import RecipeColumn from "../RecipeColumn/RecipeColumn";
 import styles from './RecipeColumnContainer.module.css';
 import { get } from '../../utils';
 import { RecipeAPIResponse, Recipe } from '../../types';
+import RecipeColumnSkeleton from "../RecipeColumnSkeleton/RecipeColumnSkeleton";
+import { Suspense } from 'react';
+import Skeleton from "react-loading-skeleton";
 
 
 const api_url = "http://127.0.0.1:5000/api/v1";
@@ -11,9 +14,12 @@ const recipe_url = api_url + "/recipes";
 function RecipeColumnContainer() {  
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [lockedRecipes, setLockedRecipes] = useState<number[]>([]); // TODO: connect lock button here
+  const [loading, setLoading] = useState(false);
 
   
   async function fetchData() {
+    setLoading(true)
+
     const response = await get<RecipeAPIResponse>(recipe_url);
     console.log(response)
     const responseRecipes = response.map((recipeResponse) => recipeResponse.recipe);
@@ -22,6 +28,8 @@ function RecipeColumnContainer() {
     }
     
     setRecipes(responseRecipes)
+
+    setLoading(false)
   };
 
   const toggleLockRecipe = (index: number) => {
@@ -46,14 +54,22 @@ function RecipeColumnContainer() {
     fetchData();
   }, []);
 
-  
+  const skeletonColumns = Array.from({ length: 5 }, (_, index) => (
+    <RecipeColumnSkeleton key={index} />
+  ));
 
   return (
-    <div className={styles.RecipeColumnContainer}  onKeyDown={handleKeyDown} tabIndex={0}>
-      {recipes.map((recipe, index) => (
-        <RecipeColumn key={index} recipe={recipe} onLockClick={() => toggleLockRecipe(index)} />
-      ))}
-    </div>
+  
+      <div className={styles.RecipeColumnContainer}  onKeyDown={handleKeyDown} tabIndex={0}>
+        {loading ? ( 
+          skeletonColumns
+        ) : (
+          recipes.map((recipe, index) => (
+            <RecipeColumn key={index} recipe={recipe} onLockClick={() => toggleLockRecipe(index)} />
+          ))
+        )}
+      </div>
+  
   );
 }
 
