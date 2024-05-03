@@ -1,4 +1,4 @@
-nav {
+.Navbar {
   height: 10%;
   width: 100%;
 
@@ -17,6 +17,10 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.NavButtonsContainer {
+  display: none;
 }
 
 .NavButtons {
