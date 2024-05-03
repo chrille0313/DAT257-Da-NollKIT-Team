@@ -6,6 +6,7 @@ import { RecipeAPIResponse, Recipe } from '../../types';
 import RecipeColumnSkeleton from "../RecipeColumnSkeleton/RecipeColumnSkeleton";
 import { Suspense } from 'react';
 import Skeleton from "react-loading-skeleton";
+import React from "react";
 
 
 const api_url = "http://127.0.0.1:5000/api/v1";
@@ -33,14 +34,14 @@ function RecipeColumnContainer() {
   };
 
   const toggleLockRecipe = (index: number) => {
-    // TODO: use setLockedRecipes instead of lockedRecipes
-   if (lockedRecipes.includes(index)) {
-      lockedRecipes.splice(lockedRecipes.indexOf(index), 1)
+    const newLockedRecipes = lockedRecipes.slice();
+   if (newLockedRecipes.includes(index)) {
+    newLockedRecipes.splice(newLockedRecipes.indexOf(index), 1)
    }
    else {
-    lockedRecipes.push(index);
+    newLockedRecipes.push(index);
    }
-   console.log(lockedRecipes)
+   setLockedRecipes(newLockedRecipes)
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -55,22 +56,24 @@ function RecipeColumnContainer() {
   }, []);
 
   const skeletonColumns = Array.from({ length: 5 }, (_, index) => (
-    <RecipeColumnSkeleton key={index} />
+    lockedRecipes.includes(index) ? null : <RecipeColumnSkeleton key={index} />
   ));
+  
 
   return (
   
-      <div className={styles.RecipeColumnContainer}  onKeyDown={handleKeyDown} tabIndex={0}>
-        {loading ? ( 
-          skeletonColumns
+    <div className={styles.RecipeColumnContainer}  onKeyDown={handleKeyDown} tabIndex={0}>
+    {recipes.map((recipe, index) => (
+      <React.Fragment key={index}>
+        {(lockedRecipes.includes(index) || !loading) ? (
+          <RecipeColumn key={index} recipe={recipe} onLockClick={() => toggleLockRecipe(index)} />
         ) : (
-          recipes.map((recipe, index) => (
-            <RecipeColumn key={index} recipe={recipe} onLockClick={() => toggleLockRecipe(index)} />
-          ))
+          <RecipeColumnSkeleton key={index} />
         )}
-      </div>
-  
-  );
+      </React.Fragment>
+    ))}
+  </div>
+);
 }
 
 export default RecipeColumnContainer;
