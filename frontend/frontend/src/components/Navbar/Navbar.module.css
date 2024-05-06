@@ -1,33 +1,32 @@
-.Navbar {
-  height: 10%;
-  width: 100%;
-
-  padding: 1.25rem;
-
-  display: flex;
-  justify-content: space-between;
-
+#AppBar, #AppBar .Toolbar {
   color: black;
   background: white;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  z-index: 1000;
+
+  z-index: 1000000;
 }
 
-.LogoContainer {
+.Toolbar {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
 }
 
 .NavButtonsContainer {
-  display: none;
+  display: flex;
+  gap: 1.75rem;
 }
 
-.NavButtons {
+.NavButton {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 0.25rem;
+}
 
-  list-style: none;
-  padding: 0;
+.NavDrawerContent {
+  padding: 1.5rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.5rem;
 }
