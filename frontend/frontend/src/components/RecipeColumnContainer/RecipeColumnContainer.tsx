@@ -24,11 +24,14 @@ function RecipeColumnContainer() {
     const response = await get<RecipeAPIResponse>(recipe_url);
     console.log(response)
     const responseRecipes = response.map((recipeResponse) => recipeResponse.recipe);
+
     for (var index of lockedRecipes) {
         responseRecipes[index] = recipes[index]
     }
     
+    console.log(recipes)
     setRecipes(responseRecipes)
+    console.log(recipes)
 
     setLoading(false)
   };
@@ -44,15 +47,27 @@ function RecipeColumnContainer() {
    setLockedRecipes(newLockedRecipes)
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+  // const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+  //   event.preventDefault()
+  //   if (event.key === ' ' && lockedRecipes.length < recipes.length) {
+  //       fetchData()
+  //   }
+  // };  
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    console.log()
     event.preventDefault()
     if (event.key === ' ' && lockedRecipes.length < recipes.length) {
-        fetchData()
+      if (event.repeat) {
+        return;
+      }
+      fetchData()
     }
   };
 
   useEffect(() => {
     fetchData();
+    window.addEventListener('keydown', handleKeyDown);
   }, []);
 
   const skeletonColumns = Array.from({ length: 5 }, (_, index) => (
@@ -62,7 +77,7 @@ function RecipeColumnContainer() {
 
   return (
 
-    <div className={styles.RecipeColumnContainer} tabIndex={0}  onKeyDown={handleKeyDown}>
+    <div className={styles.RecipeColumnContainer} tabIndex={0}>
     {recipes.map((recipe, index) => (
       <React.Fragment key={index}>
         {(lockedRecipes.includes(index) || !loading) ? (
