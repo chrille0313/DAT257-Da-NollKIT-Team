@@ -12,9 +12,23 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import FileDownloadDoneOutlinedIcon from '@mui/icons-material/FileDownloadDoneOutlined';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
+//import LinesEllipsis from 'react-lines-ellipsis'
 
 interface RecipeColumnProps {
   recipe: Recipe
+}
+
+// 0.5 - 1.8
+function Clamp(props:number) {
+  return Math.max(0, Math.min(props, 1.8));
+}
+
+function Normalize(props:number) {
+  return (props - 0)/(1.8-0)
+}
+
+function ToKilogram(props:number) {
+  return props/1000
 }
 
 function RecipeColumn({recipe}: RecipeColumnProps) {
@@ -44,6 +58,20 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
         
         <img src={recipe.image} alt='Tasty kangaroo meat'></img>
         <div className={styles.ImageTextOverlay}>
+        <div className={styles.HoverButtonGroup}>
+          <IconButton className={styles.IconButton}>
+            <ClearOutlinedIcon/>
+          </IconButton>
+          <IconButton className={styles.IconButton}>
+            <FileDownloadOutlinedIcon/>
+          </IconButton>
+          <IconButton className={styles.IconButton}>
+            <InfoOutlinedIcon />
+          </IconButton>
+          <IconButton className={styles.IconButton}>
+            <LockOpenIcon />
+          </IconButton>
+        </div>
           <p>{recipe.totalTime} min</p>
           <p>{recipe.yield} portions</p>
         </div>
@@ -62,33 +90,20 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
             <Box sx={{ width: '80%' }}>
               <LinearProgress
                 variant="determinate"
-                value={recipe.totalCO2Emissions/recipe.yield}
-                sx={{background: 'linear-gradient(to right, #6fcbb6, #9c64f4)',
+                value={Normalize(Clamp(ToKilogram(recipe.totalCO2Emissions/recipe.yield)))*100}
+                sx={{background: 'linear-gradient(to right, #008000,#FFFF00, #FF0000)',
                 '> span': { backgroundColor: 'red' },
                 }}
                 />
             </Box>
             <div>
-                {Math.round(recipe.totalCO2Emissions/recipe.yield)}
+                {ToKilogram(Math.trunc(recipe.totalCO2Emissions/recipe.yield))}
             </div>
+            <p className = {styles.COtag}>CO<sub className = {styles.COtag2}>2</sub></p>
         </div>
       </div>
       
       <div className={styles.HoverOverlay}>
-        <div className={styles.HoverButtonGroup}>
-          <IconButton className={styles.IconButton}>
-            <ClearOutlinedIcon/>
-          </IconButton>
-          <IconButton className={styles.IconButton}>
-            <FileDownloadOutlinedIcon/>
-          </IconButton>
-          <IconButton className={styles.IconButton}>
-            <InfoOutlinedIcon />
-          </IconButton>
-          <IconButton className={styles.IconButton}>
-            <LockOpenIcon />
-          </IconButton>
-        </div>
       </div>
     </article>
   );
