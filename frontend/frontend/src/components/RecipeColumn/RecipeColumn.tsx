@@ -35,7 +35,7 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
     return () => {
       clearInterval(timer);
     }
-  }, []);
+  }, []); 
 
   return (
     <article className={styles.RecipeContainer}>
@@ -60,12 +60,17 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
           </div>
           */}
             <Box sx={{ width: '80%' }}>
-              <LinearProgress variant="determinate" value={progress} />
+              <LinearProgress
+                variant="determinate"
+                value={recipe.totalCO2Emissions/recipe.yield}
+                sx={{background: 'linear-gradient(to right, #6fcbb6, #9c64f4)',
+                '> span': { backgroundColor: 'red' },
+                }}
+                />
             </Box>
             <div>
-                1.39
+                {Math.round(recipe.totalCO2Emissions/recipe.yield)}
             </div>
-        
         </div>
       </div>
       
