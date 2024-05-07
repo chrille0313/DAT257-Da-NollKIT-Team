@@ -15,10 +15,12 @@ import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 
 interface RecipeColumnProps {
   recipe: Recipe
+  onLockClick: () => void;
 }
 
-function RecipeColumn({recipe}: RecipeColumnProps) {
+function RecipeColumn({recipe, onLockClick}: RecipeColumnProps) {
 
+<<<<<<< HEAD
   const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
@@ -39,6 +41,9 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
 
   return (
     <article className={styles.RecipeContainer}>
+      <button onClick={handleLockClick}> // Example button for column locking, remove if necesarry
+      Lock column
+      </button>
 
       <div className={styles.RecipeImageContainer}> 
         
