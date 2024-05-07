@@ -24,6 +24,7 @@ type Ingredient = {
 export type Recipe = {
   calories: number
   co2EmissionsClass: string
+  totalCO2Emissions: number
   image: string
   images: Image
   ingredients: Ingredient[]
