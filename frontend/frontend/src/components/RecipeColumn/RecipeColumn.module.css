@@ -21,15 +21,15 @@
 }
 
 .HoverButtonGroup .IconButton{
+    padding: 2rem, 0, 0, 0;
     color: white;
 }
 
 .HoverButtonGroup {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-
     gap: 2rem;
 }
 
