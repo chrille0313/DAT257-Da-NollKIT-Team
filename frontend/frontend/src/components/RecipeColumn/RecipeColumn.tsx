@@ -20,7 +20,14 @@ interface RecipeColumnProps {
 
 function RecipeColumn({recipe, onLockClick}: RecipeColumnProps) {
 
-<<<<<<< HEAD
+  const handleLockClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    
+    if (event.type !== 'keydown') { 
+      onLockClick(); 
+    } 
+  };
+
+
   const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
@@ -41,9 +48,6 @@ function RecipeColumn({recipe, onLockClick}: RecipeColumnProps) {
 
   return (
     <article className={styles.RecipeContainer}>
-      <button onClick={handleLockClick}> // Example button for column locking, remove if necesarry
-      Lock column
-      </button>
 
       <div className={styles.RecipeImageContainer}> 
         
@@ -85,7 +89,7 @@ function RecipeColumn({recipe, onLockClick}: RecipeColumnProps) {
           <IconButton className={styles.IconButton}>
             <InfoOutlinedIcon />
           </IconButton>
-          <IconButton className={styles.IconButton}>
+          <IconButton className={styles.IconButton} onClick={handleLockClick}>
             <LockOpenIcon />
           </IconButton>
         </div>

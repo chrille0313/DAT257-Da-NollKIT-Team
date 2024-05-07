@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import RecipeColumn from "../RecipeColumn/RecipeColumn";
 import styles from './RecipeColumnContainer.module.css';
 import { get } from '../../utils';
@@ -61,8 +61,8 @@ function RecipeColumnContainer() {
   
 
   return (
-  
-    <div className={styles.RecipeColumnContainer}  onKeyDown={handleKeyDown} tabIndex={0}>
+
+    <div className={styles.RecipeColumnContainer} tabIndex={0}  onKeyDown={handleKeyDown}>
     {recipes.map((recipe, index) => (
       <React.Fragment key={index}>
         {(lockedRecipes.includes(index) || !loading) ? (
