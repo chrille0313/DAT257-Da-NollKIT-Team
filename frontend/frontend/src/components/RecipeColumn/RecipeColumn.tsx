@@ -12,7 +12,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import FileDownloadDoneOutlinedIcon from '@mui/icons-material/FileDownloadDoneOutlined';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
-//import LinesEllipsis from 'react-lines-ellipsis'
+
 
 interface RecipeColumnProps {
   recipe: Recipe
@@ -52,6 +52,7 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
   }, []); 
 
   return (
+    
     <article className={styles.RecipeContainer}>
 
       <div className={styles.RecipeImageContainer}> 
@@ -92,7 +93,9 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
                 variant="determinate"
                 value={Normalize(Clamp(ToKilogram(recipe.totalCO2Emissions/recipe.yield)))*100}
                 sx={{background: 'linear-gradient(to right, #008000,#FFFF00, #FF0000)',
-                '> span': { backgroundColor: 'red' },
+                '> span': { backgroundColor: 'red', direction: 'rtl',
+                },
+                
                 }}
                 />
             </Box>

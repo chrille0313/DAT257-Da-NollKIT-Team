@@ -1,9 +1,9 @@
-import React from "react";
+import * as React from "react";
 import Slider from "@mui/material/Slider";
 import tinygradient from "tinygradient";
-import { styled } from '@mui/material/styles';
+import { styled, makeStyles, withStyles } from '@mui/material/styles';
 
-const useStyles = makeStyles({
+/* const useStyles = makeStyles({
   root: {
     width: 200
   }
@@ -59,4 +59,4 @@ export default function ContinuousSlider() {
       />
     </div>
   );
-}
+} */
