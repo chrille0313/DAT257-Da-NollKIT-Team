@@ -8,9 +8,9 @@ export interface DropdownOption {
 
 export interface FilterDropdownProps {
   label: string;
-  value: DropdownOption[];
-  handleChange: (event: any, newValue: DropdownOption[]) => void;
   options: DropdownOption[];
+  value: DropdownOption[];
+  onChange: (event: any, newValue: DropdownOption[]) => void;
 }
 
 export default function FilterDropdown(props: FilterDropdownProps) {
@@ -23,7 +23,7 @@ export default function FilterDropdown(props: FilterDropdownProps) {
       limitTags={2}
       options={props.options}
       value={props.value}
-      onChange={props.handleChange}
+      onChange={props.onChange}
       renderInput={(params) => (
         <TextField
           {...params}
