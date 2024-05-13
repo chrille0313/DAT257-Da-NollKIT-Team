@@ -88,17 +88,19 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
             <p>{recipe.co2EmissionsClass} </p>
           </div>
           */}
+            <div className ={styles.ProgressBar}>
             <Box sx={{ width: '80%' }}>
               <LinearProgress
                 variant="determinate"
-                value={Normalize(Clamp(ToKilogram(recipe.totalCO2Emissions/recipe.yield)))*100}
-                sx={{background: 'linear-gradient(to right, #008000,#FFFF00, #FF0000)',
-                '> span': { backgroundColor: 'red', direction: 'rtl',
+                value={100 - Normalize(Clamp(ToKilogram(recipe.totalCO2Emissions/recipe.yield)))*100}
+                sx={{background: 'linear-gradient(to right, #FF0000,#FFFF00,#008000)',
+                '> span': { backgroundColor: 'gray', direction: 'rtl',
                 },
                 
                 }}
                 />
             </Box>
+            </div>
             <div>
                 {ToKilogram(Math.trunc(recipe.totalCO2Emissions/recipe.yield))}
             </div>

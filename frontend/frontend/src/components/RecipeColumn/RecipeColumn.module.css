@@ -103,6 +103,11 @@
     padding: 0.3rem;
 
 }
+.ProgressBar{
+    transform: rotate(180deg);
+    width: 80%;
+}
+
 
 .EmissionsClass{
     display: flex;
