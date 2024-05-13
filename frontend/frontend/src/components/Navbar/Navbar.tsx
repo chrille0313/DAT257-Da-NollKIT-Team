@@ -7,6 +7,7 @@ import { Desktop, TabletAndBelow, useDesktop } from '../Responsive'
 import { CalendarMonth, Download, ExpandMore } from '@mui/icons-material';
 import { AppBar, TextField, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem, Drawer, Autocomplete, Slider, Grid} from '@mui/material';
 import Logo from '../Logo';
+import { sortOptionByLabel } from '../../utils';
 
 
 export default function Navbar() {
@@ -16,13 +17,6 @@ export default function Navbar() {
   const [health, setHealth] = useState<DropdownOption[]>([]);
   const [cuisine, setCuisine] = useState<DropdownOption[]>([]);
   const [mealType, setMealType] = useState<DropdownOption[]>([]);
-
-
-  function sortOptionByLabel(a: any, b: any) {
-    const labelA = a.label!.toString();
-    const labelB = b.label!.toString();
-    return labelA.localeCompare(labelB);
-  }
 
   const dietFilter = {
     label: 'Diet',
@@ -162,5 +156,5 @@ export default function Navbar() {
     </Drawer>
   </>
 
-  )
+  );
 }
