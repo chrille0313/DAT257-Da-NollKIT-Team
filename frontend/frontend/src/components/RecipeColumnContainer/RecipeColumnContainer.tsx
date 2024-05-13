@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import RecipeColumn from "../RecipeColumn/RecipeColumn";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import RecipeColumn from "../RecipeColumn";
 import styles from './RecipeColumnContainer.module.css';
 import { get } from '../../utils';
 import { RecipeAPIResponse, Recipe } from '../../types';
-import RecipeColumnSkeleton from "../RecipeColumnSkeleton/RecipeColumnSkeleton";
+import RecipeColumnSkeleton from "../RecipeColumnSkeleton";
 import { Suspense } from 'react';
 import Skeleton from "react-loading-skeleton";
 import React from "react";
@@ -12,9 +12,13 @@ import React from "react";
 const api_url = "http://127.0.0.1:5000/api/v1";
 const recipe_url = api_url + "/recipes";
 
-function RecipeColumnContainer() {  
-  const [recipes, setRecipes] = useState<Recipe[]>([]);
-  const [lockedRecipes, setLockedRecipes] = useState<number[]>([]); // TODO: connect lock button here
+interface LockableRecipe {
+  recipe: Recipe;
+  isLocked: boolean;
+}
+
+export default function RecipeColumnContainer() {  
+  const [recipes, setRecipes] = useState<LockableRecipe[]>([]);
   const [loading, setLoading] = useState(false);
 
   
@@ -22,73 +26,63 @@ function RecipeColumnContainer() {
     setLoading(true)
 
     const response = await get<RecipeAPIResponse>(recipe_url);
-    console.log(response)
-    const responseRecipes = response.map((recipeResponse) => recipeResponse.recipe);
+    const responseRecipes = response.map(recipeResponse => recipeResponse.recipe);
 
-    for (var index of lockedRecipes) {
-        responseRecipes[index] = recipes[index]
+    let newRecipes: LockableRecipe[] = []
+
+    if (recipes.length != 0) {
+      recipes.forEach((recipe, index) => {
+        if (recipe.isLocked) {
+          newRecipes.push(recipe)
+        }
+        else {
+          newRecipes.push({recipe: responseRecipes.shift()!, isLocked: false})
+        }
+      })
+    }
+    else {
+      newRecipes = responseRecipes.map(recipe => ({recipe, isLocked: false}))
     }
     
-    console.log(recipes)
-    setRecipes(responseRecipes)
-    console.log(recipes)
+    console.log(newRecipes)
 
-    setLoading(false)
+    setRecipes(newRecipes)
+    setLoading(false);
   };
 
   const toggleLockRecipe = (index: number) => {
-    const newLockedRecipes = lockedRecipes.slice();
-   if (newLockedRecipes.includes(index)) {
-    newLockedRecipes.splice(newLockedRecipes.indexOf(index), 1)
-   }
-   else {
-    newLockedRecipes.push(index);
-   }
-   setLockedRecipes(newLockedRecipes)
+    const newRecipes = [...recipes];
+    newRecipes[index] = {...newRecipes[index], isLocked: !newRecipes[index].isLocked};
+    setRecipes(newRecipes);
   };
 
-  // const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-  //   event.preventDefault()
-  //   if (event.key === ' ' && lockedRecipes.length < recipes.length) {
-  //       fetchData()
-  //   }
-  // };  
-
-  const handleKeyDown = (event: KeyboardEvent) => {
-    console.log()
+  const handleKeyDown = useCallback((event: KeyboardEvent) => {
     event.preventDefault()
-    if (event.key === ' ' && lockedRecipes.length < recipes.length) {
-      if (event.repeat) {
-        return;
-      }
-      fetchData()
-    }
-  };
 
-  useEffect(() => {
-    fetchData();
-    window.addEventListener('keydown', handleKeyDown);
+    if (event.code === 'Space' && !event.repeat) {
+      fetchData();
+    } 
+  }, [recipes]);
+
+  useLayoutEffect(() => {
+    fetchData(); 
   }, []);
 
-  const skeletonColumns = Array.from({ length: 5 }, (_, index) => (
-    lockedRecipes.includes(index) ? null : <RecipeColumnSkeleton key={index} />
-  ));
-  
+  useEffect(() => {
+    document.body.addEventListener('keydown', handleKeyDown);
+
+    return () => document.body.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
+
 
   return (
-
     <div className={styles.RecipeColumnContainer} tabIndex={0}>
-    {recipes.map((recipe, index) => (
-      <React.Fragment key={index}>
-        {(lockedRecipes.includes(index) || !loading) ? (
-          <RecipeColumn key={index} recipe={recipe} onLockClick={() => toggleLockRecipe(index)} />
-        ) : (
-          <RecipeColumnSkeleton key={index} />
-        )}
-      </React.Fragment>
-    ))}
-  </div>
-);
+      {recipes.map((recipe, index) => (
+          recipe.isLocked || !loading ?
+            <RecipeColumn key={index} recipe={recipe.recipe} isLocked={recipe.isLocked} onToggleLock={() => toggleLockRecipe(index)} />
+          :
+            <RecipeColumnSkeleton key={index} />
+      ))}
+    </div>
+  );
 }
-
-export default RecipeColumnContainer;

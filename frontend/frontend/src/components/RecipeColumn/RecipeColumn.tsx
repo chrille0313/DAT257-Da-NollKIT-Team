@@ -15,19 +15,11 @@ import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 
 interface RecipeColumnProps {
   recipe: Recipe
-  onLockClick: () => void;
+  isLocked: boolean;
+  onToggleLock: () => void;
 }
 
-function RecipeColumn({recipe, onLockClick}: RecipeColumnProps) {
-
-  const handleLockClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    
-    if (event.type !== 'keydown') { 
-      onLockClick(); 
-    } 
-  };
-
-
+function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeColumnProps) {
   const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
@@ -89,8 +81,9 @@ function RecipeColumn({recipe, onLockClick}: RecipeColumnProps) {
           <IconButton className={styles.IconButton}>
             <InfoOutlinedIcon />
           </IconButton>
-          <IconButton className={styles.IconButton} onClick={handleLockClick}>
-            <LockOpenIcon />
+
+          <IconButton className={styles.IconButton} onClick={onToggleLock}>
+            {isLocked ? <LockIcon /> : <LockOpenIcon />}
           </IconButton>
         </div>
       </div>
