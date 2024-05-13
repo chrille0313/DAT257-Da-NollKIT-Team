@@ -1,12 +1,23 @@
 import styles from './Navbar.module.css';
+import FilterDropdown, { DropdownOption } from '../FilterDropdown';
+import RangedSlider from '../RangedSlider';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 import { Desktop, TabletAndBelow, useDesktop } from '../Responsive'
 import { CalendarMonth, Download, ExpandMore } from '@mui/icons-material';
-import { AppBar, TextField, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem, Drawer, Autocomplete} from '@mui/material';
+import { AppBar, TextField, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem, Drawer, Autocomplete, Slider, Grid} from '@mui/material';
+import Logo from '../Logo';
 
 
 export default function Navbar() {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const [diet, setDiet] = useState<DropdownOption[]>([]);
+  const [health, setHealth] = useState<DropdownOption[]>([]);
+  const [cuisine, setCuisine] = useState<DropdownOption[]>([]);
+  const [mealType, setMealType] = useState<DropdownOption[]>([]);
+
+
   function sortOptionByLabel(a: any, b: any) {
     const labelA = a.label!.toString();
     const labelB = b.label!.toString();
@@ -15,6 +26,8 @@ export default function Navbar() {
 
   const dietFilter = {
     label: 'Diet',
+    state: diet,
+    setState: setDiet,
     options: [
       { value: 'balanced', label: 'Balanced' },
       { value: 'high-fiber', label: 'High Fiber' },
@@ -27,6 +40,8 @@ export default function Navbar() {
 
   const healthFilter = {
     label: 'Health',
+    state: health,
+    setState: setHealth,
     options: [
       { value: 'dairy-free', label: 'Dairy Free' },
       { value: 'egg-free', label: 'Egg Free' },
@@ -50,6 +65,8 @@ export default function Navbar() {
 
   const cuisineFilter = {
     label: 'Cuisine',
+    state: cuisine,
+    setState: setCuisine,
     options: [
       { value: 'american', label: 'American' },
       { value: 'asian', label: 'Asian' },
@@ -74,6 +91,8 @@ export default function Navbar() {
 
   const mealTypeFilter = {
     label: 'Meal Type',
+    state: mealType,
+    setState: setMealType,
     options: [
       { value: 'breakfast', label: 'Breakfast' },
       { value: 'dinner', label: 'Dinner' },
@@ -84,39 +103,29 @@ export default function Navbar() {
   const filters = [dietFilter, healthFilter, cuisineFilter, mealTypeFilter]
 
   function NavDrawerContent() {
+    
     return (
       <Box role="presentation" className={styles.NavDrawerContent}>
         {filters.map((filter) => (
-          <Autocomplete
-            id="tags-outlined"
-            multiple
-            filterSelectedOptions
-            limitTags={2}
+          <FilterDropdown
+            key={filter.label}
+            label={filter.label}
+            value={filter.state}
+            handleChange={(event, newValue) => filter.setState(newValue)}
             options={filter.options}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label={filter.label}
-              />
-            )}
           />
         ))}
+        {/* <RangedSlider 
+          value={timeRange}
+          handleChange={(event, newValue) => setTimeRange(newValue)}
+          valueLabelFormat={(value) => `${value} min`}
+        /> */}
       </Box>
     );
   }
 
-  const [drawerOpen, setDrawerOpen] = useState(false);
-
   function toggleDrawer() {
     setDrawerOpen(!drawerOpen);
-  }
-
-  function Logo() {
-    return (
-      <header>
-        <h1>Dish Planner</h1>
-      </header>
-    );
   }
 
   return (
@@ -152,5 +161,6 @@ export default function Navbar() {
       <NavDrawerContent />
     </Drawer>
   </>
+
   )
 }
