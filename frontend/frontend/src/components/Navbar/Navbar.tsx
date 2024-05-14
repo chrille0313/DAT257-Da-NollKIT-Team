@@ -1,5 +1,5 @@
 import styles from './Navbar.module.css';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Menu as MenuIcon } from '@mui/icons-material';
 import { useState } from 'react';
 import { Desktop, TabletAndBelow, useDesktop } from '../Responsive'
 import { CalendarMonth, Download, ExpandMore } from '@mui/icons-material';
@@ -32,13 +32,7 @@ export default function Navbar() {
           </Desktop>
           
           <TabletAndBelow>
-            <IconButton
-              size="large"
-              color="inherit"
-              onClick={toggleDrawer}
-            >
-              <MenuIcon />
-            </IconButton>
+            <MenuIcon onClick={toggleDrawer} />
           </TabletAndBelow>
         </Toolbar>
       </Container>
