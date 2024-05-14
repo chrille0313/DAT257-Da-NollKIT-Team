@@ -1,5 +1,5 @@
 import styles from './Navbar.module.css';
-import { Menu as MenuIcon } from '@mui/icons-material';
+import { Menu as MenuIcon, Close } from '@mui/icons-material';
 import { useState } from 'react';
 import { Desktop, TabletAndBelow, useDesktop } from '../Responsive'
 import { CalendarMonth, Download, ExpandMore } from '@mui/icons-material';
@@ -31,7 +31,9 @@ export default function Navbar() {
         </Desktop>
         
         <TabletAndBelow>
-          <MenuIcon onClick={toggleDrawer} />
+          <IconButton color="inherit" onClick={toggleDrawer}>
+            {drawerOpen ? <Close /> : <MenuIcon /> }
+          </IconButton>
         </TabletAndBelow>
       </Toolbar>
     </AppBar>
