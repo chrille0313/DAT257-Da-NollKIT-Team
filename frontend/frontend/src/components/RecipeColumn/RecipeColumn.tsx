@@ -12,6 +12,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import FileDownloadDoneOutlinedIcon from '@mui/icons-material/FileDownloadDoneOutlined';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
+import Popup from '../InfoPopUp/InfoPopUp';
 
 
 interface RecipeColumnProps {
@@ -33,9 +34,20 @@ function ToKilogram(props:number) {
 
 function RecipeColumn({recipe}: RecipeColumnProps) {
 
+  // Info Button
   const HandleInfoClick = () => {
     window.location.href = recipe.url
   }
+
+  const [isPopupOpen, setIsPopupOpen] = React.useState(false);
+
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+  }
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
 
   const [progress, setProgress] = React.useState(0);
 
@@ -70,9 +82,15 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
           <IconButton className={styles.IconButton}>
             <FileDownloadOutlinedIcon/>
           </IconButton>
-          <IconButton className={styles.IconButton} onClick={HandleInfoClick}>
+          <IconButton className={styles.IconButton} onClick={handleOpenPopup}>
             <InfoOutlinedIcon />
           </IconButton>
+          {isPopupOpen && <Popup onClose={handleClosePopup}>
+            
+            <h2>This is a popup</h2>
+            <p>Some content goes here...</p>
+
+          </Popup>}
           <IconButton className={styles.IconButton}>
             <LockOpenIcon />
           </IconButton>

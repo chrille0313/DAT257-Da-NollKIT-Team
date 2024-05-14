@@ -27,6 +27,7 @@
 .HoverButtonGroup .IconButton{
     padding: 2rem, 0, 0, 0;
     color: white;
+    cursor: pointer;
 }
 
 .HoverButtonGroup {
