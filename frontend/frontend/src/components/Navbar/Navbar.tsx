@@ -19,23 +19,21 @@ export default function Navbar() {
   return (
   <>
     <AppBar position="static" id={styles.AppBar}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters className={styles.Toolbar}>
-          <Logo />
+      <Toolbar className={styles.Toolbar}>
+        <Logo />
 
-          <Desktop>
-            <Box className={styles.NavButtonsContainer}>
-              <Button className={styles.NavButton} color='inherit'>Planner <CalendarMonth /></Button>
-              <Button className={styles.NavButton} color='inherit'>Export <Download /></Button>
-              <Button className={styles.NavButton} color='inherit' onClick={toggleDrawer}>Filter <ExpandMore /></Button>
-            </Box>
-          </Desktop>
-          
-          <TabletAndBelow>
-            <MenuIcon onClick={toggleDrawer} />
-          </TabletAndBelow>
-        </Toolbar>
-      </Container>
+        <Desktop>
+          <Box className={styles.NavButtonsContainer}>
+            <Button className={styles.NavButton} color='inherit'>Planner <CalendarMonth /></Button>
+            <Button className={styles.NavButton} color='inherit'>Export <Download /></Button>
+            <Button className={styles.NavButton} color='inherit' onClick={toggleDrawer}>Filter <ExpandMore /></Button>
+          </Box>
+        </Desktop>
+        
+        <TabletAndBelow>
+          <MenuIcon onClick={toggleDrawer} />
+        </TabletAndBelow>
+      </Toolbar>
     </AppBar>
     
     <Drawer open={drawerOpen} anchor={useDesktop() ? 'top' : 'left'} onClose={() => setDrawerOpen(false)}>
