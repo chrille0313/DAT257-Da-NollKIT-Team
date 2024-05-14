@@ -106,6 +106,7 @@
 .ProgressBar{
     transform: rotate(180deg);
     width: 80%;
+    padding-left: 1rem;
 }
 
 

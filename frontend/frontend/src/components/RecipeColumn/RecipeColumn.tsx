@@ -12,10 +12,26 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import FileDownloadDoneOutlinedIcon from '@mui/icons-material/FileDownloadDoneOutlined';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
+import LinesEllipsis from 'react-lines-ellipsis'
+
 
 
 interface RecipeColumnProps {
   recipe: Recipe
+}
+
+function defaultYield(props:number) {
+  if(props==0) {
+    return 'unknown';
+  }
+  return props + ' portions';
+}
+
+function defaultTime(props:number) {
+  if(props==0) {
+    return 'unknown';
+  }
+  return props + ' min';
 }
 
 // 0.5 - 1.8
@@ -73,14 +89,22 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
             <LockOpenIcon />
           </IconButton>
         </div>
-          <p>{recipe.totalTime} min</p>
-          <p>{recipe.yield} portions</p>
+          <p>{defaultTime(recipe.totalTime)}</p>
+          <p>{defaultYield(recipe.yield)}</p>
         </div>
       </div>
 
       <div className={styles.RecipeInfoContainer}>
         <div className={styles.RecipeTitleContainer}>
-          <h2 className={styles.RecipeTitle}>{recipe.label}</h2>
+          <h2 className={styles.RecipeTitle}>
+          <LinesEllipsis
+            text={recipe.label}
+            maxLine='3'
+            ellipsis='...'
+            trimRight
+            basedOn='letters'
+          />
+          </h2>
         </div>
         <div className = {styles.EmissionContainer}>
           {/*
@@ -89,7 +113,7 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
           </div>
           */}
             <div className ={styles.ProgressBar}>
-            <Box sx={{ width: '80%' }}>
+            <Box sx={{ width: '100%' }}>
               <LinearProgress
                 variant="determinate"
                 value={100 - Normalize(Clamp(ToKilogram(recipe.totalCO2Emissions/recipe.yield)))*100}
