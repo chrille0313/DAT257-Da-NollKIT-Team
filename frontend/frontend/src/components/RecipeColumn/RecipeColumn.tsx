@@ -33,6 +33,10 @@ function ToKilogram(props:number) {
 
 function RecipeColumn({recipe}: RecipeColumnProps) {
 
+  const HandleInfoClick = () => {
+    window.location.href = recipe.url
+  }
+
   const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
@@ -66,7 +70,7 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
           <IconButton className={styles.IconButton}>
             <FileDownloadOutlinedIcon/>
           </IconButton>
-          <IconButton className={styles.IconButton}>
+          <IconButton className={styles.IconButton} onClick={HandleInfoClick}>
             <InfoOutlinedIcon />
           </IconButton>
           <IconButton className={styles.IconButton}>
