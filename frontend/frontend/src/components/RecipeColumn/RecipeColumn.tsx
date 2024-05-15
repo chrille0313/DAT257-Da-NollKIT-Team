@@ -85,7 +85,7 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
           <IconButton className={styles.IconButton} onClick={HandleOpenModal}>
             <InfoOutlinedIcon />
           </IconButton>
-            <CustomModal open={isModalOpen} onClose={HandleClosedModal}>
+            <CustomModal open={isModalOpen} onClose={HandleClosedModal} recipe={recipe}>
               <div>
               </div>
             </CustomModal>
