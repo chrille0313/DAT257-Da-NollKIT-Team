@@ -3,22 +3,24 @@ import RecipeColumn from "../RecipeColumn";
 import styles from './RecipeColumnContainer.module.css';
 import { get } from '../../utils';
 import { RecipeAPIResponse, Recipe } from '../../types';
+import { useAppSelector } from "../../app/hooks";
 import RecipeColumnSkeleton from "../RecipeColumnSkeleton";
 import { Suspense } from 'react';
 import Skeleton from "react-loading-skeleton";
 import React from "react";
 
 
-const api_url = "http://127.0.0.1:5000/api/v1";
-const recipe_url = api_url + "/recipes";
-
 interface LockableRecipe {
   recipe: Recipe;
   isLocked: boolean;
 }
 
+const api_url = "http://127.0.0.1:5000/api/v1";
+const recipe_url = api_url + "/recipes";
+
 export default function RecipeColumnContainer() {  
-  const [recipes, setRecipes] = useState<LockableRecipe[]>([]);
+  const filters = useAppSelector(state => state.api.filters);
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [loading, setLoading] = useState(false);
 
   

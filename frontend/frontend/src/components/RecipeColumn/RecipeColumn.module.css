@@ -10,7 +10,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-
+    padding-top: 2.5rem;
     display: none;
 
     background: rgba(0, 0, 0, 0.25);
@@ -20,16 +20,25 @@
     display: block;
 }
 
+.RecipeContainer:hover .HoverButtonGroup{
+    display: flex;
+}
+
 .HoverButtonGroup .IconButton{
+    padding: 2rem, 0, 0, 0;
     color: white;
 }
 
 .HoverButtonGroup {
-    display: flex;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     gap: 2rem;
 }
 
@@ -94,6 +103,12 @@
     padding: 0.3rem;
 
 }
+.ProgressBar{
+    transform: rotate(180deg);
+    width: 80%;
+    padding-left: 1rem;
+}
+
 
 .EmissionsClass{
     display: flex;
@@ -110,6 +125,18 @@
 }
 
 .EmissionBar{
+}
+
+.COtag{
+    display: flex;
+    justify-content: end;
+    margin-top: 0.2rem;
+    margin-left:  0.4rem;
+    font-size: 0.7rem;  
+}
+.COtag2{
+    margin-top: 0.2rem;
+    
 }
 
 
