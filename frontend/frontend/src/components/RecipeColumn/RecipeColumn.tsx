@@ -68,27 +68,24 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
   }, []); 
 
   return (
-    
     <article className={styles.RecipeContainer}>
-
-      <div className={styles.RecipeImageContainer}> 
-        
-        <img src={recipe.image} alt='Tasty kangaroo meat'></img>
+      <div className={styles.RecipeImageContainer}>
+        <img src={kangaroo2} alt='Tasty kangaroo meat' />
         <div className={styles.ImageTextOverlay}>
-        <div className={styles.HoverButtonGroup}>
-          <IconButton className={styles.IconButton}>
-            <ClearOutlinedIcon/>
-          </IconButton>
-          <IconButton className={styles.IconButton}>
-            <FileDownloadOutlinedIcon/>
-          </IconButton>
-          <IconButton className={styles.IconButton}>
-            <InfoOutlinedIcon />
-          </IconButton>
-          <IconButton className={styles.IconButton}>
-            <LockOpenIcon />
-          </IconButton>
-        </div>
+          <div className={styles.HoverButtonGroup}>
+            <IconButton className={styles.IconButton}>
+              <ClearOutlinedIcon/>
+            </IconButton>
+            <IconButton className={styles.IconButton}>
+              <FileDownloadOutlinedIcon/>
+            </IconButton>
+            <IconButton className={styles.IconButton}>
+              <InfoOutlinedIcon />
+            </IconButton>
+            <IconButton className={styles.IconButton}>
+              <LockOpenIcon />
+            </IconButton>
+          </div>
           <p>{defaultTime(recipe.totalTime)}</p>
           <p>{defaultYield(recipe.yield)}</p>
         </div>
