@@ -1,11 +1,55 @@
-.RecipeContainer{
+.RecipeContainer {
     background-color: #3b3b3b;
     color: #ffffff;
-}
-
-.RecipeImageContainer {
+    display: flex;
+    flex-direction: column;
     position: relative;
 }
+
+.HoverOverlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding-top: 2.5rem;
+    display: none;
+
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.RecipeContainer:hover .HoverOverlay {
+    display: block;
+}
+
+.RecipeContainer:hover .HoverButtonGroup{
+    display: flex;
+}
+
+.HoverButtonGroup .IconButton{
+    padding: 2rem, 0, 0, 0;
+    color: white;
+}
+
+.HoverButtonGroup {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+
+.RecipeImageContainer {
+    display: flex;
+    height: 70%;
+    position: relative;
+}
+
 
 .ImageTextOverlay {
     width: 100%;
@@ -26,35 +70,73 @@
 }
 
 .RecipeInfoContainer {
-    padding: 0.5rem 0.75rem 0.75rem 0.75rem;
-
+    
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     gap: 0.5rem;
+    padding: 0.5rem 0.75rem 0.75rem 0.75rem;
+    width: 100%;
+    height: 30%;
+}
+
+.RecipeTitleContainer {
+    display: block;
+    gap: 0.5rem;
+    width: 100%;
 }
 
 .RecipeTitle {
     text-shadow: rgba(0, 0, 0, 0.25) 0 4px 4px;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     text-align: center;
 }
 
-.IngredientsContainer {
+.EmissionContainer{
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    position: relative;
+    flex-direction: row;
+    align-items: center ;
+    justify-content: space-between;
+    padding: 0.3rem;
 
-    font-family: 'Inria Serif', serif;
+}
+.ProgressBar{
+    transform: rotate(180deg);
+    width: 80%;
+    padding-left: 1rem;
 }
 
-.RecipeSubtitle{
-    text-align: center;
-}
 
-.IngredientsListContainer {
+.EmissionsClass{
     display: flex;
+    border: solid;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: rgb(0, 255, 34);
+    border-width: 0.2rem;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    margin: 0rem;
+    justify-content: center;
+    align-items: center;
 }
 
-.IngredientsTable > tr:not(:first-child) > td {
-    padding-top: 0.25rem;
+.EmissionBar{
 }
+
+.COtag{
+    display: flex;
+    justify-content: end;
+    margin-top: 0.2rem;
+    margin-left:  0.4rem;
+    font-size: 0.7rem;  
+}
+.COtag2{
+    margin-top: 0.2rem;
+    
+}
+
+

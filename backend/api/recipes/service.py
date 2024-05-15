@@ -35,7 +35,7 @@ class RecipeService:
         return recipes[:int(params['count'])]
 
     def populate_default_params(self, params):
-        default_fields = {'label', 'calories', 'image', 'images', 'co2EmissionsClass', 'yield', 'ingredients', 'totalTime', 'source', 'shareAs'}
+        default_fields = {'label', 'calories', 'image', 'images', 'co2EmissionsClass', 'totalCO2Emissions', 'yield', 'ingredients', 'totalTime', 'source', 'shareAs'}
 
         params['app_id'] = '94cb00ae'  # FIXME: regenerate and use environment variable
         params['app_key'] = '8dfe8940a9a85b83edfa9e7b97f4e5b0'  # FIXME: regenerate and use environment variable
@@ -53,7 +53,6 @@ class RecipeService:
             'mealType': choice(['breakfast', 'dinner', 'lunch']),
             'type': 'public'
         }
-
 
         for k, v in default_params.items():
             params.setdefault(k, v)
