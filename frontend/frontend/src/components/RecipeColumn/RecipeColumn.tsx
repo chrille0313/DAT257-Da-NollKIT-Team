@@ -12,7 +12,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import FileDownloadDoneOutlinedIcon from '@mui/icons-material/FileDownloadDoneOutlined';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
-import Popup from '../InfoPopUp/InfoPopUp';
+import CustomModal from '../CustomModal/CustomModal';
 
 
 interface RecipeColumnProps {
@@ -35,19 +35,19 @@ function ToKilogram(props:number) {
 function RecipeColumn({recipe}: RecipeColumnProps) {
 
   // Info Button
-  const HandleInfoClick = () => {
-    window.location.href = recipe.url
-  }
+  // const HandleInfoClick = () => {
+  //   window.location.href = recipe.url
+  // }
 
-  const [isPopupOpen, setIsPopupOpen] = React.useState(false);
+  const [isModalOpen, setModalOpen] = React.useState(false)
 
-  const handleOpenPopup = () => {
-    setIsPopupOpen(true);
-  }
-
-  const handleClosePopup = () => {
-    setIsPopupOpen(false);
+  const HandleClosedModal = () => {
+    setModalOpen(false);
   };
+
+  const HandleOpenModal = () => {
+    setModalOpen(true)
+  }
 
   const [progress, setProgress] = React.useState(0);
 
@@ -82,15 +82,13 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
           <IconButton className={styles.IconButton}>
             <FileDownloadOutlinedIcon/>
           </IconButton>
-          <IconButton className={styles.IconButton} onClick={handleOpenPopup}>
+          <IconButton className={styles.IconButton} onClick={HandleOpenModal}>
             <InfoOutlinedIcon />
           </IconButton>
-          {isPopupOpen && <Popup onClose={handleClosePopup}>
-            
-            <h2>This is a popup</h2>
-            <p>Some content goes here...</p>
-
-          </Popup>}
+            <CustomModal open={isModalOpen} onClose={HandleClosedModal}>
+              <div>
+              </div>
+            </CustomModal>
           <IconButton className={styles.IconButton}>
             <LockOpenIcon />
           </IconButton>
