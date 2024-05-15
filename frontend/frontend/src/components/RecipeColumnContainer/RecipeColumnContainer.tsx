@@ -18,12 +18,13 @@ interface LockableRecipe {
 const api_url = "http://127.0.0.1:5000/api/v1";
 const recipe_url = api_url + "/recipes";
 
+
 export default function RecipeColumnContainer() {  
   const filters = useAppSelector(state => state.api.filters);
-  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [recipes, setRecipes] = useState<LockableRecipe[]>([]);
   const [loading, setLoading] = useState(false);
 
-  
+
   async function fetchData() {
     setLoading(true)
 
@@ -46,8 +47,6 @@ export default function RecipeColumnContainer() {
       newRecipes = responseRecipes.map(recipe => ({recipe, isLocked: false}))
     }
     
-    console.log(newRecipes)
-
     setRecipes(newRecipes)
     setLoading(false);
   };
