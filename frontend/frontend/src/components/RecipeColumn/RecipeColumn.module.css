@@ -20,16 +20,16 @@
     display: block;
 }
 
-.RecipeContainer:hover .HoverButtonGroup{
+.RecipeContainer:hover .HoverButtonsContainer{
     display: flex;
 }
 
-.HoverButtonGroup .IconButton{
+.HoverButtonsContainer .IconButton{
     padding: 2rem, 0, 0, 0;
     color: white;
 }
 
-.HoverButtonGroup {
+.HoverButtonsContainer {
     display: none;
     position: absolute;
     top: 50%;

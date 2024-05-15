@@ -1,18 +1,11 @@
 import styles from './RecipeColumn.module.css';
-import kangaroo from '../../static/images/kangaroo.jpg';
-import kangaroo2 from '../../static/images/kram-med-ru.jpg';
 import { Recipe } from '../../types';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import { IconButton } from '@mui/material';
-import LockOpenIcon from '@mui/icons-material/LockOpen';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
-import FileDownloadDoneOutlinedIcon from '@mui/icons-material/FileDownloadDoneOutlined';
-import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
+import { Lock, LockOpen, InfoOutlined, FileDownloadOutlined, FileDownloadDoneOutlined, ClearOutlined } from '@mui/icons-material';
 import LinesEllipsis from 'react-lines-ellipsis'
-
 
 
 interface RecipeColumnProps {
@@ -70,22 +63,24 @@ function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeColumnProps) {
   return (
     <article className={styles.RecipeContainer}>
       <div className={styles.RecipeImageContainer}>
-        <img src={kangaroo2} alt='Tasty kangaroo meat' />
+        <img src={recipe.image} />
+        
         <div className={styles.ImageTextOverlay}>
-          <div className={styles.HoverButtonGroup}>
+          <div className={styles.HoverButtonsContainer}>
             <IconButton className={styles.IconButton}>
-              <ClearOutlinedIcon/>
+              <ClearOutlined />
             </IconButton>
             <IconButton className={styles.IconButton}>
-              <FileDownloadOutlinedIcon/>
+              <FileDownloadOutlined />
             </IconButton>
             <IconButton className={styles.IconButton}>
-              <InfoOutlinedIcon />
+              <InfoOutlined />
             </IconButton>
-            <IconButton className={styles.IconButton}>
-              <LockOpenIcon />
+            <IconButton className={styles.IconButton} onClick={onToggleLock}>
+              {isLocked ? <Lock /> : <LockOpen />}
             </IconButton>
           </div>
+
           <p>{defaultTime(recipe.totalTime)}</p>
           <p>{defaultYield(recipe.yield)}</p>
         </div>
@@ -129,23 +124,7 @@ function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeColumnProps) {
         </div>
       </div>
       
-      <div className={styles.HoverOverlay}>
-        <div className={styles.HoverButtonGroup}>
-          <IconButton className={styles.IconButton}>
-            <ClearOutlinedIcon/>
-          </IconButton>
-          <IconButton className={styles.IconButton}>
-            <FileDownloadOutlinedIcon/>
-          </IconButton>
-          <IconButton className={styles.IconButton}>
-            <InfoOutlinedIcon />
-          </IconButton>
-
-          <IconButton className={styles.IconButton} onClick={onToggleLock}>
-            {isLocked ? <LockIcon /> : <LockOpenIcon />}
-          </IconButton>
-        </div>
-      </div>
+      <div className={styles.HoverOverlay} />
     </article>
   );
 }
