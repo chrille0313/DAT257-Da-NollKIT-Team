@@ -5,8 +5,7 @@ import { Recipe } from '../../types';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
-import { Button, IconButton } from '@mui/material';
-import LockIcon from '@mui/icons-material/Lock';
+import { IconButton } from '@mui/material';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
@@ -134,6 +133,5 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
     </article>
   );
 }
-
 
 export default RecipeColumn;

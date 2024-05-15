@@ -3,7 +3,7 @@ import { Menu as MenuIcon, Close } from '@mui/icons-material';
 import { useState } from 'react';
 import { Desktop, TabletAndBelow, useDesktop } from '../Responsive'
 import { CalendarMonth, Download, ExpandMore } from '@mui/icons-material';
-import { AppBar, TextField, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem, Drawer, Autocomplete, Slider, Grid} from '@mui/material';
+import { AppBar, Box, Toolbar, IconButton, Button, Drawer } from '@mui/material';
 import Logo from '../Logo';
 import NavDrawerContent from './NavDrawerContent';
 

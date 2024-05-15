@@ -21,7 +21,7 @@ function RecipeColumnContainer() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   return (
     <div className={styles.RecipeColumnContainer}>
