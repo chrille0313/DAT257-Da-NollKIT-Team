@@ -17,6 +17,8 @@ import LinesEllipsis from 'react-lines-ellipsis'
 
 interface RecipeColumnProps {
   recipe: Recipe
+  isLocked: boolean;
+  onToggleLock: () => void;
 }
 
 function defaultYield(props: number) {
@@ -46,7 +48,7 @@ function ToKilogram(props:number) {
   return props / 1000
 }
 
-function RecipeColumn({recipe}: RecipeColumnProps) {
+function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeColumnProps) {
   const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
@@ -128,6 +130,21 @@ function RecipeColumn({recipe}: RecipeColumnProps) {
       </div>
       
       <div className={styles.HoverOverlay}>
+        <div className={styles.HoverButtonGroup}>
+          <IconButton className={styles.IconButton}>
+            <ClearOutlinedIcon/>
+          </IconButton>
+          <IconButton className={styles.IconButton}>
+            <FileDownloadOutlinedIcon/>
+          </IconButton>
+          <IconButton className={styles.IconButton}>
+            <InfoOutlinedIcon />
+          </IconButton>
+
+          <IconButton className={styles.IconButton} onClick={onToggleLock}>
+            {isLocked ? <LockIcon /> : <LockOpenIcon />}
+          </IconButton>
+        </div>
       </div>
     </article>
   );
