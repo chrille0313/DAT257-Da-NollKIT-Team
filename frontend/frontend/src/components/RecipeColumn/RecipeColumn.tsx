@@ -19,35 +19,34 @@ interface RecipeColumnProps {
   recipe: Recipe
 }
 
-function defaultYield(props:number) {
-  if(props==0) {
+function defaultYield(props: number) {
+  if(props === 0) {
     return 'unknown';
   }
   return props + ' portions';
 }
 
-function defaultTime(props:number) {
-  if(props==0) {
+function defaultTime(props: number) {
+  if(props === 0) {
     return 'unknown';
   }
   return props + ' min';
 }
 
 // 0.5 - 1.8
-function Clamp(props:number) {
+function Clamp(props: number) {
   return Math.max(0, Math.min(props, 1.8));
 }
 
-function Normalize(props:number) {
-  return (props - 0)/(1.8-0)
+function Normalize(props: number) {
+  return (props - 0) / (1.8 - 0)
 }
 
 function ToKilogram(props:number) {
-  return props/1000
+  return props / 1000
 }
 
 function RecipeColumn({recipe}: RecipeColumnProps) {
-
   const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
