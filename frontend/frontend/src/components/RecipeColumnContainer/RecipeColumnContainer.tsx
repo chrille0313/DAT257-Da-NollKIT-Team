@@ -28,7 +28,7 @@ export default function RecipeColumnContainer() {
   async function fetchData() {
     setLoading(true)
 
-    const response = await get<RecipeAPIResponse>(recipe_url);
+    const response = await get<RecipeAPIResponse>(recipe_url, filters);
     const responseRecipes = response.map(recipeResponse => recipeResponse.recipe);
 
     let newRecipes: LockableRecipe[] = []
