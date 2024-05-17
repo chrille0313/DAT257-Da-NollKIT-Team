@@ -81,7 +81,7 @@ export default function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeCol
               variant="determinate"
               value={getProgress(ToKilo(recipe.totalCO2Emissions/recipe.yield), 0, MAX_CO2)}
               sx={{
-                background: 'linear-gradient(to right, #008000, #FFFF00, #FF0000)',
+                background: 'linear-gradient(to left, #008000, #FFFF00, #FF0000)',
                 '> span': { backgroundColor: 'gray' },
               }}
             />
