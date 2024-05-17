@@ -40,7 +40,7 @@ export default function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeCol
 
   return (
     <article className={styles.RecipeContainer}>
-      <div className={styles.RecipeImageContainer}>
+      <section className={styles.RecipeImageContainer}>
         <img src={recipe.image} />
         
         <div className={styles.ImageTextOverlay}>
@@ -68,10 +68,10 @@ export default function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeCol
             <p>{formatValueWithDefault(recipe.yield, 'portions')}</p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className={styles.RecipeInfoContainer}>
-        <div className={styles.RecipeTitleContainer}>
+      <section className={styles.RecipeInfoContainer}>
+        <header className={styles.RecipeTitleContainer}>
           <h2 className={styles.RecipeTitle}>
           <LinesEllipsis
             text={recipe.label}
@@ -81,7 +81,7 @@ export default function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeCol
             basedOn='letters'
           />
           </h2>
-        </div>
+        </header>
         <div className = {styles.EmissionContainer}>
           <div className ={styles.ProgressBar}>
             <LinearProgress
@@ -98,7 +98,7 @@ export default function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeCol
             {ToKilo(Math.trunc(recipe.totalCO2Emissions/recipe.yield))} CO<sub>2</sub>
           </p>
         </div>
-      </div>
+      </section>
       
       <div className={styles.HoverOverlay} />
     </article>
