@@ -42,6 +42,22 @@ export default function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeCol
     return 100 - Normalize(value, min, max) * 100;
   }
 
+  const handleDownload = () => {
+    // Implement logic to generate and initiate download of recipe data
+    // For example, you can create a blob and initiate a download
+    const recipeData = JSON.stringify(recipe); // Convert recipe object to JSON
+    const blob = new Blob([recipeData], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${recipe.label}.json`; // Set filename for download
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+
   return (
     <article className={styles.RecipeContainer}>
       <section className={styles.RecipeImageContainer}>
@@ -52,7 +68,7 @@ export default function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeCol
             <IconButton className={styles.IconButton}>
               <ClearOutlined />
             </IconButton>
-            <IconButton className={styles.IconButton}>
+            <IconButton className={styles.IconButton} onClick={handleDownload}>
               <FileDownloadOutlined />
             </IconButton>
             <IconButton className={styles.IconButton} onClick={HandleOpenModal}>
