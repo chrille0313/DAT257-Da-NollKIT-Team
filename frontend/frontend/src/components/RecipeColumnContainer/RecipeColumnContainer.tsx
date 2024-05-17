@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import RecipeColumn from "../RecipeColumn";
 import styles from './RecipeColumnContainer.module.css';
 import { get } from '../../utils';
@@ -6,7 +6,6 @@ import { RecipeAPIResponse, Recipe } from '../../types';
 import { useAppSelector } from "../../app/hooks";
 import RecipeColumnSkeleton from "../RecipeColumnSkeleton";
 import { Suspense } from 'react';
-import Skeleton from "react-loading-skeleton";
 import React from "react";
 
 
