@@ -3,6 +3,8 @@
 
     display: flex;
     align-items: stretch;
+
+    
 }
 
 .RecipeColumnContainer > * {

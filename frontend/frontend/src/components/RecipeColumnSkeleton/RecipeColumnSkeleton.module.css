@@ -1,0 +1,22 @@
+.container {
+    background-color: #3b3b3b;
+    color: #ffffff;
+}
+
+.skeletonImage {
+    position: relative;
+    align-self: center;
+    margin-top: 25px;
+}   
+
+.skeletonHeader {
+    position: relative;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.skeletonText {
+    position: relative;
+    margin-left: 20px;
+    margin-right: 20px;
+}
