@@ -35,6 +35,7 @@ export type Recipe = {
   source: string
   totalTime: number
   yield: number
+  url: string
 }
 
 type RecipeResponse = {

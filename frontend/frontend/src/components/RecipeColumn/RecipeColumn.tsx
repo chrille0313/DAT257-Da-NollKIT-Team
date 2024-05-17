@@ -1,7 +1,8 @@
 import styles from './RecipeColumn.module.css';
 import { Recipe } from '../../types';
 import LinearProgress from '@mui/material/LinearProgress';
-import { IconButton } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
+import CustomModal from '../CustomModal';
 import { Lock, LockOpen, InfoOutlined, FileDownloadOutlined, FileDownloadDoneOutlined, ClearOutlined, AccessTimeRounded, Restaurant } from '@mui/icons-material';
 import LinesEllipsis from 'react-lines-ellipsis'
 import { Clamp, ToKilo } from '../../utils/Math';
@@ -26,7 +27,16 @@ function Normalize(value: number, min: number, max: number) {
 }
 
 export default function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeColumnProps) {
+  const [isModalOpen, setModalOpen] = useState(false)
+  
+  const HandleClosedModal = () => {
+    setModalOpen(false);
+  };
 
+  const HandleOpenModal = () => {
+    setModalOpen(true)
+  }
+  
   const getProgress = (value: number, min: number, max: number) => {
     return 100 - Normalize(value, min, max) * 100;
   }
@@ -44,9 +54,13 @@ export default function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeCol
             <IconButton className={styles.IconButton}>
               <FileDownloadOutlined />
             </IconButton>
-            <IconButton className={styles.IconButton}>
+            <IconButton className={styles.IconButton} onClick={HandleOpenModal}>
               <InfoOutlined />
             </IconButton>
+            <CustomModal open={isModalOpen} onClose={HandleClosedModal} recipe={recipe}>
+              <div>
+              </div>
+            </CustomModal>
             <IconButton className={styles.IconButton} onClick={onToggleLock}>
               {isLocked ? <Lock /> : <LockOpen />}
             </IconButton>
