@@ -3,10 +3,11 @@ import { Recipe } from '../../types';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import { IconButton } from '@mui/material';
-import { Lock, LockOpen, InfoOutlined, FileDownloadOutlined, FileDownloadDoneOutlined, ClearOutlined } from '@mui/icons-material';
+import { Lock, LockOpen, InfoOutlined, FileDownloadOutlined, FileDownloadDoneOutlined, ClearOutlined, AccessTimeRounded, Restaurant } from '@mui/icons-material';
 import LinesEllipsis from 'react-lines-ellipsis'
 import { useState, useEffect } from 'react';
 import { Clamp } from '../../utils/Math';
+
 
 
 const MAX_CO2 = 1.8;
@@ -58,8 +59,14 @@ export default function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeCol
             </IconButton>
           </div>
 
-          <p>{formatValueWithDefault(recipe.totalTime, 'min')}</p>
-          <p>{formatValueWithDefault(recipe.yield, 'portions')}</p>
+          <div className={styles.IconWithText}>
+            <AccessTimeRounded className={styles.Icon} />
+            <p>{formatValueWithDefault(recipe.totalTime, 'min')}</p>
+          </div>
+          <div className={styles.IconWithText}>
+            <Restaurant className={styles.Icon} />
+            <p>{formatValueWithDefault(recipe.yield, 'portions')}</p>
+          </div>
         </div>
       </div>
 

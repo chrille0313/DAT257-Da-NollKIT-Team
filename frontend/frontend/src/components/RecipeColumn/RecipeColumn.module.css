@@ -69,8 +69,20 @@
     background: linear-gradient(0deg, rgba(59,59,59,1) 0%, rgba(59,59,59,1) 5%, rgba(59,59,59,0.35) 75%, rgba(255,255,255,0) 100%);
 }
 
-.RecipeInfoContainer {
-    
+.IconWithText {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0.9rem;
+}
+
+.IconWithText .Icon {
+    font-size: 1.2rem;
+}
+
+.RecipeInfoContainer {   
     display: flex;
     flex-direction: column;
     align-items: center;
