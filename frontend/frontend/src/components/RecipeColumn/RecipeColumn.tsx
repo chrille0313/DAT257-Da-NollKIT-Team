@@ -6,6 +6,7 @@ import CustomModal from '../CustomModal';
 import { Lock, LockOpen, InfoOutlined, FileDownloadOutlined, FileDownloadDoneOutlined, ClearOutlined, AccessTimeRounded, Restaurant } from '@mui/icons-material';
 import LinesEllipsis from 'react-lines-ellipsis'
 import { Clamp, ToKilo } from '../../utils/Math';
+import { useState } from 'react';
 
 
 const MAX_CO2 = 1.8;
