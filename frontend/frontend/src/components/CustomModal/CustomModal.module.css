@@ -113,7 +113,6 @@
   max-height: 100%;
   overflow-y: auto; 
   font-family: 'Inria Serif', serif;
-  border: 1px solid red;
 }
 
 .IngredientsTable {

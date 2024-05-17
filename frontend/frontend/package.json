@@ -22,7 +22,6 @@
     "react-lines-ellipsis": "^0.15.4",
     "react-loader-spinner": "^6.1.6",
     "react-scripts": "5.0.1",
-    "styled-components": "^6.1.11",
     "tinygradient": "^1.1.5",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"

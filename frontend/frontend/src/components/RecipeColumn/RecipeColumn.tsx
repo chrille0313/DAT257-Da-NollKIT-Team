@@ -12,7 +12,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import FileDownloadDoneOutlinedIcon from '@mui/icons-material/FileDownloadDoneOutlined';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
-import CustomModal from '../CustomModal/CustomModal';
+import CustomModal from '../CustomModal';
 
 
 interface RecipeColumnProps {
@@ -33,11 +33,6 @@ function ToKilogram(props:number) {
 }
 
 function RecipeColumn({recipe}: RecipeColumnProps) {
-
-  // Info Button
-  // const HandleInfoClick = () => {
-  //   window.location.href = recipe.url
-  // }
 
   const [isModalOpen, setModalOpen] = React.useState(false)
 

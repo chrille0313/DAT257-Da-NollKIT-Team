@@ -11,7 +11,7 @@ interface CustomModalProps {
   recipe: Recipe;
 }
 
-const CustomModal: React.FC<CustomModalProps> = ({ open, onClose, children, recipe }) => {
+export default function CustomModal ({ open, onClose, children, recipe }: CustomModalProps) {
   return (
     <Modal className={styles.modalBackground} open={open} onClose={onClose}>
       <Box className={styles.infoContainer}>
@@ -59,5 +59,3 @@ const CustomModal: React.FC<CustomModalProps> = ({ open, onClose, children, reci
     </Modal>
   );
 };
-
-export default CustomModal;
