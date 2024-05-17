@@ -20,17 +20,17 @@
     display: block;
 }
 
-.RecipeContainer:hover .HoverButtonGroup{
+.RecipeContainer:hover .HoverButtonsContainer {
     display: flex;
 }
 
-.HoverButtonGroup .IconButton{
+.HoverButtonsContainer .IconButton {
     padding: 2rem, 0, 0, 0;
     color: white;
     cursor: pointer;
 }
 
-.HoverButtonGroup {
+.HoverButtonsContainer {
     display: none;
     position: absolute;
     top: 50%;
@@ -70,8 +70,20 @@
     background: linear-gradient(0deg, rgba(59,59,59,1) 0%, rgba(59,59,59,1) 5%, rgba(59,59,59,0.35) 75%, rgba(255,255,255,0) 100%);
 }
 
-.RecipeInfoContainer {
-    
+.IconWithText {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0.9rem;
+}
+
+.IconWithText .Icon {
+    font-size: 1.2rem;
+}
+
+.RecipeInfoContainer {   
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,49 +106,20 @@
     text-align: center;
 }
 
-.EmissionContainer{
+.EmissionContainer {
     width: 100%;
     display: flex;
-    position: relative;
-    flex-direction: row;
-    align-items: center ;
     justify-content: space-between;
-    padding: 0.3rem;
-
+    align-items: center ;
+    gap: 1.5rem;
 }
-.ProgressBar{
+
+.ProgressBar {
+    width: 100%;
+    flex: 1;
     transform: rotate(180deg);
-    width: 80%;
 }
 
-
-.EmissionsClass{
-    display: flex;
-    border: solid;
-    background-color: rgba(0, 0, 0, 0.2);
-    border-color: rgb(0, 255, 34);
-    border-width: 0.2rem;
-    border-radius: 50%;
-    height: 2rem;
-    width: 2rem;
-    margin: 0rem;
-    justify-content: center;
-    align-items: center;
+.COtag {
+    font-size: 0.7rem;
 }
-
-.EmissionBar{
-}
-
-.COtag{
-    display: flex;
-    justify-content: end;
-    margin-top: 0.2rem;
-    margin-left:  0.4rem;
-    font-size: 0.7rem;  
-}
-.COtag2{
-    margin-top: 0.2rem;
-    
-}
-
-
