@@ -1,11 +1,12 @@
 .modalBackground {
-  position: absolute;
+  position: fixed;
+  top: 50%;
+  left: 50%;
   transform: 'translate(-50%, -50%)';
+  background-color: rgba(0,0,0,0.5);
   width: 100%;
   height: 100%;
-  border: '2px solid #000';
-  box-shadow: 24;
-  z-index: 5;
+  z-index: 1200;
 }
 
 .infoContainer {
@@ -13,11 +14,9 @@
   width: 90%;
   height: 90%;
   background-color: white;
-  z-index: 4;
   margin: auto;
-  top: 5%;
   display: flex;
-
+  flex-direction: row;
 }
 
 .InfoContainerSplit{
@@ -36,13 +35,13 @@
   height: 5%;
   width: 100%;
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
 
 }
 
 .CloseButtonContainer {
   height: 100%;
-  width: 10%;
+  width: auto;
   background-color: red; 
 
 }
@@ -61,11 +60,10 @@
 }
 
 .closeButtonText {
-  height: 100%;
-  width: 100%;
   color: white;
   display: flex;
   justify-content: center;
+  align-items: center;
   background: red;
   font-size: large ;
 }
@@ -87,7 +85,7 @@
 }
 
 .RecipeContentSplit {
-  width: 50%;
+  width: 97%;
   height: 100%;
   
   display: flex;
@@ -102,14 +100,24 @@
 
   padding-left: 5%;
   padding-top: 5%;
+
+  max-height: 100%;
+  overflow-y: 'auto';
 }
 
 .IngredientsContainer {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-
+  width: 600px; 
+  max-height: 100%;
+  overflow-y: auto; 
   font-family: 'Inria Serif', serif;
+  border: 1px solid red;
+}
+
+.IngredientsTable {
+  width: 100%;
 }
 
 .IngredientsTable > tr:not(:first-child) > td {
@@ -121,8 +129,3 @@
   width: 100%;
   border: solid;
 }
-
-
-
-
-
