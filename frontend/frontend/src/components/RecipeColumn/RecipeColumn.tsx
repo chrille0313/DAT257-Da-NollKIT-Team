@@ -1,19 +1,16 @@
 import styles from './RecipeColumn.module.css';
 import { Recipe } from '../../types';
-import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import { IconButton } from '@mui/material';
 import { Lock, LockOpen, InfoOutlined, FileDownloadOutlined, FileDownloadDoneOutlined, ClearOutlined, AccessTimeRounded, Restaurant } from '@mui/icons-material';
 import LinesEllipsis from 'react-lines-ellipsis'
-import { useState, useEffect } from 'react';
-import { Clamp } from '../../utils/Math';
-
+import { Clamp, ToKilo } from '../../utils/Math';
 
 
 const MAX_CO2 = 1.8;
 
 
-interface RecipeColumnProps {
+export interface RecipeColumnProps {
   recipe: Recipe
   isLocked: boolean;
   onToggleLock: () => void;
@@ -26,10 +23,6 @@ function formatValueWithDefault(value: number, suffix: string, default_value: an
 function Normalize(value: number, min: number, max: number) {
   const clampedValue = Clamp(value, min, max)
   return (clampedValue - min) / (max - min)
-}
-
-function ToKilo(value: number) {
-  return value / 1000
 }
 
 export default function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeColumnProps) {
