@@ -1,11 +1,15 @@
 import styles from './RecipeColumn.module.css';
 import { Recipe } from '../../types';
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import { IconButton } from '@mui/material';
 import { Lock, LockOpen, InfoOutlined, FileDownloadOutlined, FileDownloadDoneOutlined, ClearOutlined } from '@mui/icons-material';
 import LinesEllipsis from 'react-lines-ellipsis'
+import { useState, useEffect } from 'react';
+import { Clamp } from '../../utils/Math';
+
+
+const MAX_CO2 = 1.8;
 
 
 interface RecipeColumnProps {
@@ -14,51 +18,24 @@ interface RecipeColumnProps {
   onToggleLock: () => void;
 }
 
-function defaultYield(props: number) {
-  if(props === 0) {
-    return 'unknown';
+function formatValueWithDefault(value: number, suffix: string, default_value: any = 'unknown') {
+  return value === 0 ? default_value : `${value} ${suffix}`;
+}
+
+function Normalize(value: number, min: number, max: number) {
+  const clampedValue = Clamp(value, min, max)
+  return (clampedValue - min) / (max - min)
+}
+
+function ToKilo(value: number) {
+  return value / 1000
+}
+
+export default function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeColumnProps) {
+
+  const getProgress = (value: number, min: number, max: number) => {
+    return 100 - Normalize(value, min, max) * 100;
   }
-  return props + ' portions';
-}
-
-function defaultTime(props: number) {
-  if(props === 0) {
-    return 'unknown';
-  }
-  return props + ' min';
-}
-
-// 0.5 - 1.8
-function Clamp(props: number) {
-  return Math.max(0, Math.min(props, 1.8));
-}
-
-function Normalize(props: number) {
-  return (props - 0) / (1.8 - 0)
-}
-
-function ToKilogram(props:number) {
-  return props / 1000
-}
-
-function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeColumnProps) {
-  const [progress, setProgress] = React.useState(0);
-
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((oldProgress) => {
-
-        if (oldProgress === 100) {
-          return 0;
-        }
-        const diff = Math.random() * 10;
-        return 50;
-      });
-    }, 500);
-    return () => {
-      clearInterval(timer);
-    }
-  }, []); 
 
   return (
     <article className={styles.RecipeContainer}>
@@ -81,8 +58,8 @@ function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeColumnProps) {
             </IconButton>
           </div>
 
-          <p>{defaultTime(recipe.totalTime)}</p>
-          <p>{defaultYield(recipe.yield)}</p>
+          <p>{formatValueWithDefault(recipe.totalTime, 'min')}</p>
+          <p>{formatValueWithDefault(recipe.yield, 'portions')}</p>
         </div>
       </div>
 
@@ -99,28 +76,20 @@ function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeColumnProps) {
           </h2>
         </div>
         <div className = {styles.EmissionContainer}>
-          {/*
-          <div className={styles.EmissionsClass}>
-            <p>{recipe.co2EmissionsClass} </p>
+          <div className ={styles.ProgressBar}>
+            <LinearProgress
+              variant="determinate"
+              value={getProgress(ToKilo(recipe.totalCO2Emissions/recipe.yield), 0, MAX_CO2)}
+              sx={{
+                background: 'linear-gradient(to right, #008000, #FFFF00, #FF0000)',
+                '> span': { backgroundColor: 'gray' },
+              }}
+            />
           </div>
-          */}
-            <div className ={styles.ProgressBar}>
-            <Box sx={{ width: '100%' }}>
-              <LinearProgress
-                variant="determinate"
-                value={100 - Normalize(Clamp(ToKilogram(recipe.totalCO2Emissions/recipe.yield)))*100}
-                sx={{background: 'linear-gradient(to right, #FF0000,#FFFF00,#008000)',
-                '> span': { backgroundColor: 'gray', direction: 'rtl',
-                },
-                
-                }}
-                />
-            </Box>
-            </div>
-            <div>
-                {ToKilogram(Math.trunc(recipe.totalCO2Emissions/recipe.yield))}
-            </div>
-            <p className = {styles.COtag}>CO<sub className = {styles.COtag2}>2</sub></p>
+
+          <p className={styles.COtag}>
+            {ToKilo(Math.trunc(recipe.totalCO2Emissions/recipe.yield))} CO<sub>2</sub>
+          </p>
         </div>
       </div>
       
@@ -128,5 +97,3 @@ function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeColumnProps) {
     </article>
   );
 }
-
-export default RecipeColumn;

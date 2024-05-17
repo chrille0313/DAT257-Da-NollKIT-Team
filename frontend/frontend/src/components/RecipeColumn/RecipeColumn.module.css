@@ -20,11 +20,11 @@
     display: block;
 }
 
-.RecipeContainer:hover .HoverButtonsContainer{
+.RecipeContainer:hover .HoverButtonsContainer {
     display: flex;
 }
 
-.HoverButtonsContainer .IconButton{
+.HoverButtonsContainer .IconButton {
     padding: 2rem, 0, 0, 0;
     color: white;
 }
@@ -93,50 +93,20 @@
     text-align: center;
 }
 
-.EmissionContainer{
+.EmissionContainer {
     width: 100%;
     display: flex;
-    position: relative;
-    flex-direction: row;
-    align-items: center ;
     justify-content: space-between;
-    padding: 0.3rem;
-
+    align-items: center ;
+    gap: 1.5rem;
 }
-.ProgressBar{
+
+.ProgressBar {
+    width: 100%;
+    flex: 1;
     transform: rotate(180deg);
-    width: 80%;
-    padding-left: 1rem;
 }
 
-
-.EmissionsClass{
-    display: flex;
-    border: solid;
-    background-color: rgba(0, 0, 0, 0.2);
-    border-color: rgb(0, 255, 34);
-    border-width: 0.2rem;
-    border-radius: 50%;
-    height: 2rem;
-    width: 2rem;
-    margin: 0rem;
-    justify-content: center;
-    align-items: center;
+.COtag {
+    font-size: 0.7rem;
 }
-
-.EmissionBar{
-}
-
-.COtag{
-    display: flex;
-    justify-content: end;
-    margin-top: 0.2rem;
-    margin-left:  0.4rem;
-    font-size: 0.7rem;  
-}
-.COtag2{
-    margin-top: 0.2rem;
-    
-}
-
-

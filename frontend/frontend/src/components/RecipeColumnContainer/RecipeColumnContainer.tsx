@@ -34,7 +34,7 @@ export default function RecipeColumnContainer() {
     let newRecipes: LockableRecipe[] = []
 
     if (recipes.length != 0) {
-      recipes.forEach((recipe, index) => {
+      recipes.forEach(recipe => {
         if (recipe.isLocked) {
           newRecipes.push(recipe)
         }
