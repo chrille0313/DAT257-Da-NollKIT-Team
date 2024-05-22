@@ -1,130 +1,68 @@
-.modalBackground {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: 'translate(-50%, -50%)';
-  background-color: rgba(0,0,0,0.5);
-  width: 100%;
-  height: 100%;
-  z-index: 1200;
+.ModalContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.infoContainer {
+.Modal {
   position: relative;
   width: 90%;
   height: 90%;
+  display: grid;
+  grid-template-rows: 100%;  /* One row */
+  grid-template-columns: repeat(2, 1fr);  /* Columns take up equal space */
   background-color: white;
-  margin: auto;
-  display: flex;
-  flex-direction: row;
 }
 
-.InfoContainerSplit{
-  width: 50%;
-  height: 100%;
-  
+.RecipeContentContainer {
   display: flex;
   flex-direction: column;
 }
-.FoodImage{
-  width: auto;
-  height: 100%;
-}
 
-.NavbarContainer{
-  height: 5%;
-  width: 100%;
+.NavbarContainer {
   display: flex;
   justify-content: flex-end;
-
 }
 
-.CloseButtonContainer {
-  height: 100%;
-  width: auto;
-  background-color: red; 
-
-}
-
-.closeButton {
-  height: 100%;
-  width: 100%;
-  padding: 0; /* Set padding to zero */
-  margin: 0; /* Set margin to zero */
- 
-  color: white; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
-
-.closeButtonText {
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: red;
-  font-size: large ;
-}
-
-.RecipeTitle{
-  height: 10%;
+.RecipeTitle {
   width: 100%;
   display: flex;
   justify-content: center;
-  
   align-items: center;
-  background-color: #DCEED1;
 }
-.RecipeLink{
-  text-decoration: none;
-}
-.RecipeTitleText {
+
+.RecipeLink {
   color: black;
+  text-decoration-color: black;
 }
 
-.RecipeContentSplit {
-  width: 97%;
-  height: 100%;
-  
+.RecipeContent {
   display: flex;
   flex-direction: column;
-}
-
-.Ingredients{
-  height: 85%;
-  width: 100%;
-  display: flex;
-  justify-content: left;
-
-  padding-left: 5%;
-  padding-top: 5%;
-
-  max-height: 100%;
-  overflow-y: 'auto';
+  gap: 1.5rem;
+  overflow-y: auto;
 }
 
 .IngredientsContainer {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 600px; 
-  max-height: 100%;
-  overflow-y: auto; 
-  font-family: 'Inria Serif', serif;
-}
 
-.IngredientsTable {
-  width: 100%;
+  overflow-y: auto;
+  font-family: 'Inria Serif', serif;
+
+  padding: 0 2rem;
 }
 
 .IngredientsTable > tr:not(:first-child) > td {
   padding-top: 0.25rem;
 }
 
-.Description {
-  height: 100%;
-  width: 100%;
-  border: solid;
+.ReadMoreButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.ReadMoreButton {
+  width: fit-content;
 }
