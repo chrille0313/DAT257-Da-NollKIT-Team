@@ -2,20 +2,20 @@ import { CloseRounded } from '@mui/icons-material';
 import { Box, Button, Divider, IconButton, Modal } from '@mui/material';
 import { PropsWithChildren } from 'react';
 import { Recipe } from '../../types';
-import styles from './CustomModal.module.css';
+import styles from './RecipeInfoModal.module.css';
 
-interface CustomModalProps {
+interface RecipeInfoModalProps {
   open: boolean;
   onClose: () => void;
   recipe: Recipe;
 }
 
-export default function CustomModal({
+export default function RecipeInfoModal({
   open,
   recipe,
   children,
   onClose
-}: PropsWithChildren<CustomModalProps>) {
+}: PropsWithChildren<RecipeInfoModalProps>) {
   return (
     <Modal className={styles.ModalContainer} open={open} onClose={onClose}>
       <Box className={styles.Modal}>

@@ -13,7 +13,7 @@ import { useState } from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
 import { Recipe } from '../../types';
 import { Clamp, ToKilo } from '../../utils/Math';
-import CustomModal from '../CustomModal';
+import CustomModal from '../RecipeInfoModal';
 import styles from './RecipeColumn.module.css';
 
 const MAX_CO2 = 1.8;
