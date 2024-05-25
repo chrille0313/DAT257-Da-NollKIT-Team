@@ -33,3 +33,11 @@ export default function FilterDropdown(props: FilterDropdownProps) {
     />
   );
 }
+
+export function ExtractFilterValues(filters: Record<string, DropdownOption[]>) {
+  return Object.fromEntries(
+    Object.entries(filters).map(([key, value]) => 
+      [key, value.map(filter => filter.value)]
+    )
+  );
+}

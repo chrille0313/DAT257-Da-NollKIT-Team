@@ -6,7 +6,7 @@ import { RecipeAPIResponse, Recipe } from '../../types';
 import { useAppSelector } from "../../app/hooks";
 import RecipeColumnSkeleton from "../RecipeColumnSkeleton";
 import { Suspense } from 'react';
-import React from "react";
+import { ExtractFilterValues } from "../FilterDropdown";
 
 
 interface LockableRecipe {
@@ -25,14 +25,14 @@ export default function RecipeColumnContainer() {
 
 
   async function fetchData() {
-    setLoading(true)
+    setLoading(true);
 
-    const response = await get<RecipeAPIResponse>(recipe_url, filters);
+    const response = await get<RecipeAPIResponse>(recipe_url, ExtractFilterValues(filters));
     const responseRecipes = response.map(recipeResponse => recipeResponse.recipe);
 
     let newRecipes: LockableRecipe[] = []
 
-    if (recipes.length != 0) {
+    if (recipes.length !== 0) {
       recipes.forEach(recipe => {
         if (recipe.isLocked) {
           newRecipes.push(recipe)
