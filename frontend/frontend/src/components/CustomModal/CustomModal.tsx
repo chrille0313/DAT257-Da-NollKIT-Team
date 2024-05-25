@@ -15,7 +15,7 @@ export default function CustomModal({
   open,
   recipe,
   children,
-  onClose,
+  onClose
 }: PropsWithChildren<CustomModalProps>) {
   return (
     <Modal className={styles.ModalContainer} open={open} onClose={onClose}>

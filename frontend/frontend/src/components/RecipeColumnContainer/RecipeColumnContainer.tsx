@@ -46,14 +46,14 @@ export default function RecipeColumnContainer() {
         } else {
           newRecipes.push({
             recipe: responseRecipes.shift()!,
-            isLocked: false,
+            isLocked: false
           });
         }
       });
     } else {
       newRecipes = responseRecipes.map((recipe) => ({
         recipe,
-        isLocked: false,
+        isLocked: false
       }));
     }
 

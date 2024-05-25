@@ -2,13 +2,13 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { filterReducers } from '../features/api/FilterSlices';
 
 const apiReducer = combineReducers({
-  filters: combineReducers(filterReducers),
+  filters: combineReducers(filterReducers)
 });
 
 export const store = configureStore({
   reducer: {
-    api: apiReducer,
-  },
+    api: apiReducer
+  }
 });
 
 export default store;

@@ -9,7 +9,7 @@ import {
   Toolbar,
   IconButton,
   Button,
-  Drawer,
+  Drawer
 } from '@mui/material';
 import Logo from '../Logo';
 import NavDrawerContent from './NavDrawerContent';

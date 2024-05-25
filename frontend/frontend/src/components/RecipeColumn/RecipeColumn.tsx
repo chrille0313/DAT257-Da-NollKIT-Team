@@ -10,7 +10,7 @@ import {
   FileDownloadOutlined,
   ClearOutlined,
   AccessTimeRounded,
-  Restaurant,
+  Restaurant
 } from '@mui/icons-material';
 import LinesEllipsis from 'react-lines-ellipsis';
 import { Clamp, ToKilo } from '../../utils/Math';
@@ -40,7 +40,7 @@ function Normalize(value: number, min: number, max: number) {
 export default function RecipeColumn({
   recipe,
   isLocked,
-  onToggleLock,
+  onToggleLock
 }: RecipeColumnProps) {
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -119,7 +119,7 @@ export default function RecipeColumn({
               sx={{
                 background:
                   'linear-gradient(to left, #008000, #FFFF00, #FF0000)',
-                '> span': { backgroundColor: 'gray' },
+                '> span': { backgroundColor: 'gray' }
               }}
             />
           </div>

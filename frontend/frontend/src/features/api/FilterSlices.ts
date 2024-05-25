@@ -8,8 +8,8 @@ function createFilterSlice(filterName: string) {
     initialState: [] as DropdownOption[],
     reducers: {
       setFilter: (state, action: PayloadAction<DropdownOption[]>) =>
-        action.payload,
-    },
+        action.payload
+    }
   });
 }
 
@@ -22,14 +22,14 @@ const filterSlices = Object.fromEntries(
 export const filterReducers = Object.fromEntries(
   Object.entries(filterSlices).map(([filterName, slice]) => [
     filterName,
-    slice.reducer,
+    slice.reducer
   ])
 ) as Record<RecipeFilterName, ReturnType<typeof createFilterSlice>['reducer']>;
 
 export const filterActions = Object.fromEntries(
   Object.entries(filterSlices).map(([filterName, slice]) => [
     filterName,
-    slice.actions,
+    slice.actions
   ])
 ) as Record<RecipeFilterName, ReturnType<typeof createFilterSlice>['actions']>;
 

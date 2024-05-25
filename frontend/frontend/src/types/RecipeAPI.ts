@@ -59,8 +59,8 @@ export const RecipeFilters = {
       { value: 'high-protein', label: 'High Protein' },
       { value: 'low-carb', label: 'Low Carb' },
       { value: 'low-fat', label: 'Low Fat' },
-      { value: 'low-sodium', label: 'Low Sodium' },
-    ].sort(sortOptionByLabel),
+      { value: 'low-sodium', label: 'Low Sodium' }
+    ].sort(sortOptionByLabel)
   },
   health: {
     label: 'Health',
@@ -81,8 +81,8 @@ export const RecipeFilters = {
       { value: 'tree-nut-free', label: 'Tree Nut Free' },
       { value: 'vegan', label: 'Vegan' },
       { value: 'vegetarian', label: 'Vegetarian' },
-      { value: 'wheat-free', label: 'Wheat Free' },
-    ].sort(sortOptionByLabel),
+      { value: 'wheat-free', label: 'Wheat Free' }
+    ].sort(sortOptionByLabel)
   },
   cuisine: {
     label: 'Cuisine',
@@ -104,17 +104,17 @@ export const RecipeFilters = {
       { value: 'middle-eastern', label: 'Middle Eastern' },
       { value: 'nordic', label: 'Nordic' },
       { value: 'south-american', label: 'South American' },
-      { value: 'south-east-asian', label: 'South East Asian' },
-    ].sort(sortOptionByLabel),
+      { value: 'south-east-asian', label: 'South East Asian' }
+    ].sort(sortOptionByLabel)
   },
   mealType: {
     label: 'Meal Type',
     options: [
       { value: 'breakfast', label: 'Breakfast' },
       { value: 'dinner', label: 'Dinner' },
-      { value: 'lunch', label: 'Lunch' },
-    ].sort(sortOptionByLabel),
-  },
+      { value: 'lunch', label: 'Lunch' }
+    ].sort(sortOptionByLabel)
+  }
 };
 
 export type RecipeFilterName = keyof typeof RecipeFilters;

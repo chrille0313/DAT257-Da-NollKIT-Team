@@ -8,7 +8,7 @@ export interface ControlledFilterDropdownProps {
 }
 
 export default function ControlledDropdownContainer({
-  filterName,
+  filterName
 }: ControlledFilterDropdownProps) {
   const dispatch = useAppDispatch();
   const filterProps = RecipeFilters[filterName];

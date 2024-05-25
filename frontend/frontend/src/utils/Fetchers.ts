@@ -7,8 +7,8 @@ export async function get<T>(
   const response = await axios.get(url, {
     params: params,
     paramsSerializer: {
-      indexes: null, // Remove brackets from query string
-    },
+      indexes: null // Remove brackets from query string
+    }
   });
   return response.data;
 }
