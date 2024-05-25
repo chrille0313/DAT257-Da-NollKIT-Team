@@ -17,7 +17,7 @@ export default function CustomModal ({ open, recipe, children, onClose }: PropsW
     <Modal className={styles.ModalContainer} open={open} onClose={onClose}>
       <Box className={styles.Modal}>
         {/* TODO: Carousel for multiple images */}
-        <img className = {styles.FoodImage} src={recipe.image} alt='Picture of food' /> 
+        <img className = {styles.FoodImage} src={recipe.image} alt='Food' /> 
         
         <section className={styles.RecipeContentContainer}>
           <div className = {styles.NavbarContainer}>
@@ -27,7 +27,7 @@ export default function CustomModal ({ open, recipe, children, onClose }: PropsW
           </div>
           <section className={styles.RecipeContent}>
             <header className={styles.RecipeTitle}>
-              <a className={styles.RecipeLink} href={recipe.url} target="_blank"> 
+              <a className={styles.RecipeLink} href={recipe.url} target='_blank' rel='noreferrer'> 
                 <h1 className={styles.RecipeTitleText}>{recipe.label}</h1>
               </a>
             </header>
@@ -44,7 +44,7 @@ export default function CustomModal ({ open, recipe, children, onClose }: PropsW
               </table>
             </div>
             <section className={styles.ReadMoreButtonContainer}>
-              <Button className={styles.ReadMoreButton} variant='contained' href={recipe.url}>
+              <Button className={styles.ReadMoreButton} variant='contained' href={recipe.url} target='_blank' rel='noreferrer'>
                 Read More
               </Button>
             </section>
