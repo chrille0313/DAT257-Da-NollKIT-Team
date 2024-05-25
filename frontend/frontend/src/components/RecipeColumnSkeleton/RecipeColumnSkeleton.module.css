@@ -1,49 +1,49 @@
 .Container {
-    gap: 1rem;
-    background-color: #3b3b3b;
-    color: #ffffff;
+  gap: 1rem;
+  background-color: #3b3b3b;
+  color: #ffffff;
 }
 
 .Container > * {
-    margin-right: 0.5rem;
-    margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .Container > *:first-child {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .Container > *:last-child {
-    margin-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .SkeletonImage {
-    flex: 1;
+  flex: 1;
 }
 
 .TextContentContainer {
-    height: 30%;
-    display: flex;
-    justify-content: space-between;
+  height: 30%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .IconsContainer {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .IconWithTextContainer {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .CO2Container {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .CO2Bar {
-    flex: 1;
+  flex: 1;
 }

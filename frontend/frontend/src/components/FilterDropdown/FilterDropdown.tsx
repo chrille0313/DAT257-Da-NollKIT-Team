@@ -1,5 +1,4 @@
-import { Autocomplete, TextField } from "@mui/material";
-
+import { Autocomplete, TextField } from '@mui/material';
 
 export interface DropdownOption {
   value: string;
@@ -14,7 +13,6 @@ export interface FilterDropdownProps {
 }
 
 export default function FilterDropdown(props: FilterDropdownProps) {
-
   return (
     <Autocomplete
       id="tags-outlined"
@@ -24,20 +22,16 @@ export default function FilterDropdown(props: FilterDropdownProps) {
       options={props.options}
       value={props.value}
       onChange={props.onChange}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          label={props.label}
-        />
-      )}
+      renderInput={(params) => <TextField {...params} label={props.label} />}
     />
   );
 }
 
 export function ExtractFilterValues(filters: Record<string, DropdownOption[]>) {
   return Object.fromEntries(
-    Object.entries(filters).map(([key, value]) => 
-      [key, value.map(filter => filter.value)]
-    )
+    Object.entries(filters).map(([key, value]) => [
+      key,
+      value.map((filter) => filter.value),
+    ])
   );
 }

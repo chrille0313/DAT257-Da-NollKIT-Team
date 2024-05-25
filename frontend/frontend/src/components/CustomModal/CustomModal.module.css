@@ -9,8 +9,8 @@
   width: 90%;
   height: 90%;
   display: grid;
-  grid-template-rows: 100%;  /* One row */
-  grid-template-columns: repeat(2, 1fr);  /* Columns take up equal space */
+  grid-template-rows: 100%; /* One row */
+  grid-template-columns: repeat(2, 1fr); /* Columns take up equal space */
   background-color: white;
 }
 

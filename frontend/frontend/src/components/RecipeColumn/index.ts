@@ -1,2 +1,2 @@
-export {default} from './RecipeColumn';
-export * from "./RecipeColumn";
+export { default } from './RecipeColumn';
+export * from './RecipeColumn';

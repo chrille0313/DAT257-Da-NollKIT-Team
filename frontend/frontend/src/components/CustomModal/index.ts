@@ -1,2 +1,2 @@
-export {default} from './CustomModal';
-export * from './CustomModal'
+export { default } from './CustomModal';
+export * from './CustomModal';

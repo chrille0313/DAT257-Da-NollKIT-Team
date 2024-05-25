@@ -1,7 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { filterReducers } from '../features/api/FilterSlices';
 
-
 const apiReducer = combineReducers({
   filters: combineReducers(filterReducers),
 });

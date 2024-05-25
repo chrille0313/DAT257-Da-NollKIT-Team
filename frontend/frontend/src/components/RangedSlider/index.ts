@@ -1,2 +1,2 @@
-export {default} from './RangedSlider';
+export { default } from './RangedSlider';
 export * from './RangedSlider';

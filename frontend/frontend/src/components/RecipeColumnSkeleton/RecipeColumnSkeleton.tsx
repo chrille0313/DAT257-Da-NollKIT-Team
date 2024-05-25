@@ -1,29 +1,29 @@
 import styles from './RecipeColumnSkeleton.module.css';
-import {Stack, Skeleton, Typography, Box} from '@mui/material';
+import { Box, Skeleton, Stack, Typography } from '@mui/material';
 
-const RecipeColumnSkeleton = () => { 
+const RecipeColumnSkeleton = () => {
   return (
     <Stack className={styles.Container}>
-      <Skeleton className={styles.SkeletonImage} variant='rounded' />
+      <Skeleton className={styles.SkeletonImage} variant="rounded" />
 
       <Stack className={styles.TextContentContainer}>
         <Stack>
-          <Typography className={styles.IconsContainer} variant='caption'>
+          <Typography className={styles.IconsContainer} variant="caption">
             <Box className={styles.IconWithTextContainer}>
-              <Skeleton variant='circular' width={16} height={16} />
+              <Skeleton variant="circular" width={16} height={16} />
               <Skeleton width={75} />
             </Box>
             <Box className={styles.IconWithTextContainer}>
-              <Skeleton variant='rectangular' width={16} height={16} />
+              <Skeleton variant="rectangular" width={16} height={16} />
               <Skeleton width={75} />
             </Box>
           </Typography>
 
-          <Typography variant='h3'>
-            <Skeleton /> 
+          <Typography variant="h3">
+            <Skeleton />
           </Typography>
 
-          <Typography variant='body1'>
+          <Typography variant="body1">
             <Skeleton />
             <Skeleton />
             <Skeleton />
@@ -37,7 +37,6 @@ const RecipeColumnSkeleton = () => {
       </Stack>
     </Stack>
   );
-}
-
+};
 
 export default RecipeColumnSkeleton;

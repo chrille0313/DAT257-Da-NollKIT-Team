@@ -3,5 +3,5 @@ export function Clamp(value: number, min: number, max: number) {
 }
 
 export function ToKilo(value: number) {
-  return value / 1000
+  return value / 1000;
 }
