@@ -17,6 +17,7 @@
 .RecipeContentContainer {
   display: flex;
   flex-direction: column;
+  padding: 1rem;
 }
 
 .NavbarContainer {
@@ -24,11 +25,17 @@
   justify-content: flex-end;
 }
 
+.CloseButton {
+  padding: 0;
+}
+
 .RecipeTitle {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  font-size: 1.25rem;
 }
 
 .RecipeLink {

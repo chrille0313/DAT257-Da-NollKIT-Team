@@ -12,7 +12,7 @@ interface CustomModalProps {
   recipe: Recipe;
 }
 
-export default function CustomModal ({ open, onClose, children, recipe }: PropsWithChildren<CustomModalProps>) {
+export default function CustomModal ({ open, recipe, children, onClose }: PropsWithChildren<CustomModalProps>) {
   return (
     <Modal className={styles.ModalContainer} open={open} onClose={onClose}>
       <Box className={styles.Modal}>
@@ -21,7 +21,7 @@ export default function CustomModal ({ open, onClose, children, recipe }: PropsW
         
         <section className={styles.RecipeContentContainer}>
           <div className = {styles.NavbarContainer}>
-            <IconButton onClick={onClose} className={styles.closeButton}>
+            <IconButton onClick={onClose} className={styles.CloseButton}>
               <CloseRounded />
             </IconButton>
           </div>
