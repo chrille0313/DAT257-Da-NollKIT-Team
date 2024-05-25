@@ -7,6 +7,7 @@ import { ControlledFilterDropdown } from "../FilterDropdown";
 export default function NavDrawerContent() {
   return (
     <Box role="presentation" className={styles.NavDrawerContent}>
+      <h2>Filters</h2>
       {
         (Object.keys(RecipeFilters) as RecipeFilterName[]).map(filterName =>
           <ControlledFilterDropdown key={filterName} filterName={filterName} />
