@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
-import styles from './Navbar.module.css';
-import { RecipeFilters, RecipeFilterName } from '../../types';
+import { RecipeFilterName, RecipeFilters } from '../../types';
 import { ControlledFilterDropdown } from '../FilterDropdown';
+import styles from './Navbar.module.css';
 
 export default function NavDrawerContent() {
   return (

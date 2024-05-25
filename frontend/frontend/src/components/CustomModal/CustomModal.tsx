@@ -1,9 +1,8 @@
-import styles from './CustomModal.module.css';
-import { PropsWithChildren } from 'react';
 import { CloseRounded } from '@mui/icons-material';
-import { Modal, Box, IconButton, Divider } from '@mui/material';
+import { Box, Button, Divider, IconButton, Modal } from '@mui/material';
+import { PropsWithChildren } from 'react';
 import { Recipe } from '../../types';
-import { Button } from '@mui/material';
+import styles from './CustomModal.module.css';
 
 interface CustomModalProps {
   open: boolean;

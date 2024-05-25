@@ -3,5 +3,6 @@
   "semi": true,
   "trailingComma": "none",
   "singleQuote": true,
-  "endOfLine": "lf"
+  "endOfLine": "lf",
+  "plugins": ["prettier-plugin-organize-imports"]
 }

@@ -1,4 +1,4 @@
-export { default as FilterDropdown } from './FilterDropdown';
+export * from './ControlledFilterDropdown';
 export { default as ControlledFilterDropdown } from './ControlledFilterDropdown';
 export * from './FilterDropdown';
-export * from './ControlledFilterDropdown';
+export { default as FilterDropdown } from './FilterDropdown';

@@ -1,17 +1,22 @@
-import styles from './Navbar.module.css';
-import { Menu as MenuIcon, Close } from '@mui/icons-material';
-import { useState } from 'react';
-import { Desktop, TabletAndBelow, useDesktop } from '../Responsive';
-import { CalendarMonth, Download, ExpandMore } from '@mui/icons-material';
+import {
+  CalendarMonth,
+  Close,
+  Download,
+  ExpandMore,
+  Menu as MenuIcon
+} from '@mui/icons-material';
 import {
   AppBar,
   Box,
-  Toolbar,
-  IconButton,
   Button,
-  Drawer
+  Drawer,
+  IconButton,
+  Toolbar
 } from '@mui/material';
+import { useState } from 'react';
 import Logo from '../Logo';
+import { Desktop, TabletAndBelow, useDesktop } from '../Responsive';
+import styles from './Navbar.module.css';
 import NavDrawerContent from './NavDrawerContent';
 
 export default function Navbar() {

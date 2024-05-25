@@ -1,2 +1,2 @@
-export { default } from './RecipeColumnSkeleton';
 export * from './RecipeColumnSkeleton';
+export { default } from './RecipeColumnSkeleton';

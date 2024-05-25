@@ -1,5 +1,5 @@
-import styles from './RecipeColumnSkeleton.module.css';
 import { Box, Skeleton, Stack, Typography } from '@mui/material';
+import styles from './RecipeColumnSkeleton.module.css';
 
 const RecipeColumnSkeleton = () => {
   return (

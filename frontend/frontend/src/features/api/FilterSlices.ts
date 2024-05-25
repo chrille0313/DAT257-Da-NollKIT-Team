@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DropdownOption } from '../../components/FilterDropdown';
-import { RecipeFilters, RecipeFilterName } from '../../types';
+import { RecipeFilterName, RecipeFilters } from '../../types';
 
 function createFilterSlice(filterName: string) {
   return createSlice({

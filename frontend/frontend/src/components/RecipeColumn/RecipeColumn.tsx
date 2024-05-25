@@ -1,20 +1,20 @@
-import styles from './RecipeColumn.module.css';
-import { Recipe } from '../../types';
-import LinearProgress from '@mui/material/LinearProgress';
-import { IconButton } from '@mui/material';
-import CustomModal from '../CustomModal';
 import {
+  AccessTimeRounded,
+  ClearOutlined,
+  FileDownloadOutlined,
+  InfoOutlined,
   Lock,
   LockOpen,
-  InfoOutlined,
-  FileDownloadOutlined,
-  ClearOutlined,
-  AccessTimeRounded,
   Restaurant
 } from '@mui/icons-material';
-import LinesEllipsis from 'react-lines-ellipsis';
-import { Clamp, ToKilo } from '../../utils/Math';
+import { IconButton } from '@mui/material';
+import LinearProgress from '@mui/material/LinearProgress';
 import { useState } from 'react';
+import LinesEllipsis from 'react-lines-ellipsis';
+import { Recipe } from '../../types';
+import { Clamp, ToKilo } from '../../utils/Math';
+import CustomModal from '../CustomModal';
+import styles from './RecipeColumn.module.css';
 
 const MAX_CO2 = 1.8;
 
