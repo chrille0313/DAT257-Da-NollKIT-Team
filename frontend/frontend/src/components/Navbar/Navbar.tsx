@@ -39,7 +39,9 @@ export default function Navbar() {
     </AppBar>
     
     <Drawer open={drawerOpen} anchor={useDesktop() ? 'top' : 'left'} onClose={() => setDrawerOpen(false)}>
-      <Toolbar /> {/* Add spacing from the navbar */}
+      <TabletAndBelow>
+        <Toolbar /> {/* Add spacing from the navbar */}
+      </TabletAndBelow>
       <NavDrawerContent />
     </Drawer>
   </>
