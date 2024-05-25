@@ -1,51 +1,52 @@
-import { sortOptionByLabel } from "../utils"
+import { sortOptionByLabel } from '../utils';
 
 type Imagesize = {
-  height: number
-  url: string
-  width: number
-}
+  height: number;
+  url: string;
+  width: number;
+};
 
 type Image = {
-  REGULAR: Imagesize
-  SMALL: Imagesize
-  THUMBNAIL: Imagesize
-}
+  REGULAR: Imagesize;
+  SMALL: Imagesize;
+  THUMBNAIL: Imagesize;
+};
 
 type Ingredient = {
-  food: string
-  foodCategory: string,
-  foodId: string
-  image: string
-  measure: string
-  quantity: number
-  text: string
-  weight: number
-}
+  food: string;
+  foodCategory: string;
+  foodId: string;
+  image: string;
+  measure: string;
+  quantity: number;
+  text: string;
+  weight: number;
+};
 
 export type Recipe = {
-  calories: number
-  co2EmissionsClass: string
-  totalCO2Emissions: number
-  image: string
-  images: Image
-  ingredients: Ingredient[]
-  label: string
-  shareAs: string
-  source: string
-  totalTime: number
-  yield: number
-}
+  calories: number;
+  co2EmissionsClass: string;
+  totalCO2Emissions: number;
+  image: string;
+  images: Image;
+  ingredients: Ingredient[];
+  label: string;
+  shareAs: string;
+  source: string;
+  totalTime: number;
+  yield: number;
+  url: string;
+};
 
 type RecipeResponse = {
   _links: {
     self: {
-      href: string
-      title: string
-    }
-  },
-  recipe: Recipe
-}
+      href: string;
+      title: string;
+    };
+  };
+  recipe: Recipe;
+};
 
 export type RecipeAPIResponse = RecipeResponse[];
 
@@ -91,7 +92,7 @@ export const RecipeFilters = {
       { value: 'british', label: 'British' },
       { value: 'caribbean', label: 'Caribbean' },
       { value: 'central-europe', label: 'Central Europe' },
-      { value: 'chinese', label: 'Chinese'},
+      { value: 'chinese', label: 'Chinese' },
       { value: 'eastern-europe', label: 'Eastern Europe' },
       { value: 'french', label: 'French' },
       { value: 'indian', label: 'Indian' },
@@ -114,6 +115,6 @@ export const RecipeFilters = {
       { value: 'lunch', label: 'Lunch' }
     ].sort(sortOptionByLabel)
   }
-}
+};
 
 export type RecipeFilterName = keyof typeof RecipeFilters;

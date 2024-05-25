@@ -1,12 +1,10 @@
 .RecipeColumnContainer {
-    flex: 1;
+  flex: 1;
 
-    display: flex;
-    align-items: stretch;
-
-    
+  display: flex;
+  align-items: stretch;
 }
 
 .RecipeColumnContainer > * {
-    flex: 1;  /* Make the columns take up equal space */
+  flex: 1; /* Make the columns take up equal space */
 }

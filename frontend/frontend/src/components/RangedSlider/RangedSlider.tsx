@@ -1,6 +1,5 @@
-import { Box, Slider, Typography } from "@mui/material";
-import { useState } from "react";
-
+import { Box, Slider, Typography } from '@mui/material';
+import { useState } from 'react';
 
 export interface RangeSliderProps {
   value: number | number[];
@@ -10,7 +9,11 @@ export interface RangeSliderProps {
   onUpdate: (event: Event, newValue: number[]) => void;
 }
 
-export default function RangeSlider({minValue=0, maxValue=200, ...props}: RangeSliderProps) {
+export default function RangeSlider({
+  minValue = 0,
+  maxValue = 200,
+  ...props
+}: RangeSliderProps) {
   const [range, setRange] = useState<number[]>([0, 60]);
 
   function handleChange(event: Event, newValue: number | number[]) {
@@ -34,14 +37,14 @@ export default function RangeSlider({minValue=0, maxValue=200, ...props}: RangeS
           variant="body2"
           //onClick={() => setVal(MIN)}
           sx={{ cursor: 'pointer' }}
-          >
+        >
           {0} min
         </Typography>
         <Typography
           variant="body2"
           //onClick={() => setVal(MAX)}
           sx={{ cursor: 'pointer' }}
-          >
+        >
           {200} min
         </Typography>
       </Box>

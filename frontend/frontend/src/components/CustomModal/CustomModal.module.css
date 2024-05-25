@@ -1,0 +1,75 @@
+.ModalContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Modal {
+  position: relative;
+  width: 90%;
+  height: 90%;
+  display: grid;
+  grid-template-rows: 100%; /* One row */
+  grid-template-columns: repeat(2, 1fr); /* Columns take up equal space */
+  background-color: white;
+}
+
+.RecipeContentContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.NavbarContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.CloseButton {
+  padding: 0;
+}
+
+.RecipeTitle {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.25rem;
+}
+
+.RecipeLink {
+  color: black;
+  text-decoration-color: black;
+}
+
+.RecipeContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+}
+
+.IngredientsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  overflow-y: auto;
+  font-family: 'Inria Serif', serif;
+
+  padding: 0 2rem;
+}
+
+.IngredientsTable > tr:not(:first-child) > td {
+  padding-top: 0.25rem;
+}
+
+.ReadMoreButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.ReadMoreButton {
+  width: fit-content;
+}

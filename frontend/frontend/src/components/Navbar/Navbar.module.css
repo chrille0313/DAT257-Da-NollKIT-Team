@@ -1,8 +1,9 @@
-#AppBar, #AppBar .Toolbar {
+#AppBar,
+#AppBar .Toolbar {
   color: black;
   background: white;
 
-  z-index: 1000000;
+  z-index: 1000;
 }
 
 .Toolbar {

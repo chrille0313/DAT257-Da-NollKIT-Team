@@ -1,2 +1,2 @@
-export {default} from './RecipeColumnContainer';
-export * from "./RecipeColumnContainer";
+export * from './RecipeColumnContainer';
+export { default } from './RecipeColumnContainer';
