@@ -1,22 +1,49 @@
-.container {
+.Container {
+    gap: 1rem;
     background-color: #3b3b3b;
     color: #ffffff;
 }
 
-.skeletonImage {
-    position: relative;
-    align-self: center;
-    margin-top: 25px;
-}   
-
-.skeletonHeader {
-    position: relative;
-    margin-left: 25px;
-    margin-right: 25px;
+.Container > * {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
 }
 
-.skeletonText {
-    position: relative;
-    margin-left: 20px;
-    margin-right: 20px;
+.Container > *:first-child {
+    margin-top: 1rem;
+}
+
+.Container > *:last-child {
+    margin-bottom: 0.75rem;
+}
+
+.SkeletonImage {
+    flex: 1;
+}
+
+.TextContentContainer {
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.IconsContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.IconWithTextContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.CO2Container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.CO2Bar {
+    flex: 1;
 }
