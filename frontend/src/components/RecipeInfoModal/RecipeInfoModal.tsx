@@ -1,5 +1,6 @@
 import { CloseRounded } from '@mui/icons-material';
 import { Box, Button, Divider, IconButton, Modal } from '@mui/material';
+import Fraction from 'fraction.js';
 import { PropsWithChildren } from 'react';
 import { Recipe } from '../../types';
 import styles from './RecipeInfoModal.module.css';
@@ -8,6 +9,32 @@ interface RecipeInfoModalProps {
   open: boolean;
   onClose: () => void;
   recipe: Recipe;
+}
+
+function getFractionString(
+  decimal: number,
+  ignoreDecimals: number = 2
+): string {
+  const decimalMultiplier = Math.pow(10, ignoreDecimals);
+  const rounded = Math.round(decimal * decimalMultiplier) / decimalMultiplier;
+
+  if (decimal === rounded) {
+    return decimal.toString();
+  }
+
+  return new Fraction(decimal).toFraction(false);
+}
+
+function getIngredientAmountString(ingredient: Recipe['ingredients'][0]) {
+  const quantity = getFractionString(ingredient.quantity);
+
+  if (quantity === '0') {
+    return '';
+  } else if (ingredient.measure === '<unit>') {
+    return `${quantity}`;
+  }
+
+  return `${quantity} ${ingredient.measure}`;
 }
 
 export default function RecipeInfoModal({
@@ -46,9 +73,7 @@ export default function RecipeInfoModal({
                 {recipe.ingredients.map((ingredient, index) => (
                   <tr key={index}>
                     <td>{ingredient.food}</td>
-                    <td>
-                      {ingredient.quantity} {ingredient.measure}
-                    </td>
+                    <td>{getIngredientAmountString(ingredient)}</td>
                   </tr>
                 ))}
               </table>
