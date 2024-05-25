@@ -1,9 +1,9 @@
 import styles from './RecipeColumn.module.css';
 import { Recipe } from '../../types';
 import LinearProgress from '@mui/material/LinearProgress';
-import { Button, IconButton } from '@mui/material';
+import { IconButton } from '@mui/material';
 import CustomModal from '../CustomModal';
-import { Lock, LockOpen, InfoOutlined, FileDownloadOutlined, FileDownloadDoneOutlined, ClearOutlined, AccessTimeRounded, Restaurant } from '@mui/icons-material';
+import { Lock, LockOpen, InfoOutlined, FileDownloadOutlined, ClearOutlined, AccessTimeRounded, Restaurant } from '@mui/icons-material';
 import LinesEllipsis from 'react-lines-ellipsis'
 import { Clamp, ToKilo } from '../../utils/Math';
 import { useState } from 'react';
@@ -45,7 +45,7 @@ export default function RecipeColumn({recipe, isLocked, onToggleLock}: RecipeCol
   return (
     <article className={styles.RecipeContainer}>
       <section className={styles.RecipeImageContainer}>
-        <img src={recipe.image} />
+        <img src={recipe.image} alt='Food' />
         
         <div className={styles.ImageTextOverlay}>
           <div className={styles.HoverButtonsContainer}>
